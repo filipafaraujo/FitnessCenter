@@ -1,0 +1,98 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr0ea__frasesmotivacionaises",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr0ea__frasesmotivacionais",
+    "MaxGetRowsCount": 2000,
+    "Name": "_FrasesMotivacionais",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cr0ea__frasesmotivacionais_AsyncOperations": "Tarefas de Sistema",
+      "cr0ea__frasesmotivacionais_BulkDeleteFailures": "Falhas de Eliminação em Massa",
+      "cr0ea__frasesmotivacionais_DuplicateBaseRecord": "Registos Duplicados (cr0ea__frasesmotivacionais_DuplicateBaseRecord)",
+      "cr0ea__frasesmotivacionais_DuplicateMatchingRecord": "Registos Duplicados (cr0ea__frasesmotivacionais_DuplicateMatchingRecord)",
+      "cr0ea__frasesmotivacionais_MailboxTrackingFolders": "Pastas de Monitorização Automática da Caixa de Correio",
+      "cr0ea__frasesmotivacionais_PrincipalObjectAttributeAccesses": "Partilha de Campos",
+      "cr0ea__frasesmotivacionais_ProcessSession": "Sessões de Processo",
+      "cr0ea__frasesmotivacionais_SyncErrors": "Erros de Sincronização",
+      "cr0ea__frasesmotivacionaisid": "_FrasesMotivacionais",
+      "cr0ea_frases": "Frases",
+      "cr0ea_novacoluna": "Nova coluna",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Número da Versão"
+    },
+    "PreferredName": "_FrasesMotivacionais",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "_FrasesMotivacionais (Vistas)",
+    "Name": "_cr0ea__frasesmotivacionais_views",
+    "RelatedEntityName": "_FrasesMotivacionais",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "7f71c364-60e1-40ff-a88f-1d7bcef43194": "_FrasesMotivacionais Advanced Find View",
+      "ad40bba8-5755-4bff-9f95-126e95159c41": "Inactive _FrasesMotivacionais",
+      "b4622376-ba84-4d0d-970d-94f9b39d1e2c": "_FrasesMotivacionais Associated View",
+      "cb1f3750-41dd-4ef7-8c09-dbc2defc21ca": "_FrasesMotivacionais Lookup View",
+      "f65dcbdb-c1f3-4294-b7ab-cc29f5f2ea8a": "Active _FrasesMotivacionais"
+    }
+  },
+  {
+    "DisplayName": "Status (_FrasesMotivacionais)",
+    "Name": "cr0ea__frasesmotivacionais_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "_FrasesMotivacionais"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "_FrasesMotivacionais",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (_FrasesMotivacionais)",
+    "Name": "cr0ea__frasesmotivacionais_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "_FrasesMotivacionais"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "_FrasesMotivacionais",
+    "Type": "OptionSetInfo"
+  }
+]

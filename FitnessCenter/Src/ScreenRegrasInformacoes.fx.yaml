@@ -1,0 +1,163 @@
+ScreenRegrasInformacoes As screen:
+    BackgroundImage: ='Untitled-2'
+    Fill: =RGBA(20, 52, 84, 1)
+
+    "GalleryInformacoes As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
+        DelayItemLoading: =true
+        Height: =600
+        Items: =_Regras
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =169
+        Width: =1195
+        X: =97
+        Y: =120
+        ZIndex: =8
+
+        TitleInformacoes As label:
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =20
+            Text: =ThisItem.Titulo
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 86
+            X: =4
+            ZIndex: =1
+
+        SubtitleTextoInformacoes As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =130
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =18
+            Text: =ThisItem.Texto
+            VerticalAlign: =VerticalAlign.Top
+            Width: =1188
+            X: =3
+            Y: =36
+            ZIndex: =2
+
+        SeparatorInformacoes As rectangle:
+            Height: =5
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =160
+            ZIndex: =4
+
+    Ico_Home_ScreenRegrasInformacoes As icon.Home:
+        Color: =RGBA(245, 208, 0, 1)
+        HoverBorderColor: =
+        HoverColor: =RGBA(252, 65, 123, 1)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Icon: =Icon.Home
+        OnSelect: =Navigate(ScreenMembro);
+        X: =40
+        Y: =40
+        ZIndex: =11
+
+    lbl_RegrasInformacoes As label:
+        Align: =Align.Center
+        Color: =Color.White
+        FontWeight: =FontWeight.Semibold
+        Height: =76
+        Size: =25
+        Text: ="Regras & Informações"
+        Width: =1170
+        X: =110
+        Y: =9
+        ZIndex: =12
+
+    FullTriangleSet_ScreenRegrasInformacoes As group:
+        Height: =5
+        Width: =5
+        X: =100
+        Y: =100
+        ZIndex: =34
+
+        Img_larger_12 As image:
+            Height: =216
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =170
+            Y: =549
+            ZIndex: =1
+
+        Img_tri_AzulClaro_13 As image:
+            Image: =TrianguloAzul
+            Transparency: =0.4
+            X: =104
+            Y: =298
+            ZIndex: =2
+
+        Img_tri_AzulNavy_13 As image:
+            Image: =TrianguloNavy180
+            Transparency: =0.4
+            X: =132
+            Y: =319
+            ZIndex: =3
+
+        Img_TriangSet2_13 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            X: =1062
+            Y: =480
+            ZIndex: =4
+
+        Img_TriangPurple_11 As image:
+            Height: =57
+            Image: =TrianguloRoxoLeft
+            Transparency: =0.5
+            Width: =58
+            X: =1071
+            Y: =595
+            ZIndex: =5
+
+        Img_small_12 As image:
+            Height: =50
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =50
+            X: =60
+            Y: =586
+            ZIndex: =6
+
+        Img_TriangSet1_13 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            ZIndex: =7
+
+    Logo_ScreenRegrasInformacoes As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =35
+
+        img_logo_ScreenMarcacaoSucesso_5 As image:
+            Height: =44
+            Image: =Imagem2
+            X: =1254
+            Y: =9
+            ZIndex: =9
+
+        Img_serviceFitness_ScreenMarcacaoSucesso_5 As image:
+            Height: =27
+            Image: =ServiceFitness
+            X: =1256
+            Y: =53
+            ZIndex: =10
+

@@ -1,0 +1,40 @@
+App As appinfo:
+    BackEnabled: =true
+    OnStart: |
+        =Set(
+            varMonth,
+            DateValue("1" & "/" & Month(Today()) & "/" & Year(Today()))
+        );
+        Set(
+            varFirstDayView,
+            DateAdd(
+                varMonth,
+                -Weekday(
+                    varMonth,
+                    StartOfWeek.Monday
+                ),
+                TimeUnit.Days
+            )
+        );
+        Set(
+            varToday,
+            DateValue(Day(Today()) & "/" & Month(Today()) & "/" & Year(Today()))
+        );
+        Set(
+            varTodayGAL,
+            Value(
+                Text(
+                    Today(),
+                    "[$-en-US]yyyymmdd"
+                )
+            )
+        );
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

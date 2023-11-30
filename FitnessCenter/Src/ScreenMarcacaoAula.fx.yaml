@@ -1,0 +1,595 @@
+ScreenMarcacaoAula As screen:
+    BackgroundImage: ='Untitled-2'
+    Fill: =RGBA(20, 52, 84, 1)
+
+    Logo_MarcacaoAula As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =8
+
+        img_logo_ScreenMarcacaoAula As image:
+            Height: =44
+            Image: =Imagem2
+            X: =1254
+            Y: =9
+            ZIndex: =10
+
+        Img_serviceFitness_ScreenMarcacaoAula As image:
+            Height: =27
+            Image: =ServiceFitness
+            X: =1256
+            Y: =53
+            ZIndex: =11
+
+    Btn_MarcacaoAula As button:
+        Color: =RGBA(20, 52, 84, 1)
+        Fill: =RGBA(245, 208, 0, 1)
+        Height: =100
+        OnSelect: |-
+            =SubmitForm(FormMarcacaoAula);
+            ResetForm(FormMarcacaoAula);
+            Navigate(ScreenMarcacaoAulaSucesso)
+        Size: =20
+        Text: ="Submeter"
+        Width: =250
+        X: =558
+        Y: =552
+        ZIndex: =12
+
+    FormMarcacaoAula As form:
+        DataSource: =_CronogramaDeAulas
+        DefaultMode: =FormMode.New
+        Height: =456
+        NumberOfColumns: =1
+        X: =271
+        Y: =53
+        ZIndex: =13
+
+        tipoDeAula_DataCard_MarcacaoAula As typedDataCard.comboBoxOptionSetSingleEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_tipodeaula"
+            Default: =ThisItem.'Tipo De Aula'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_CronogramaDeAulas],DataSourceInfo.DisplayName,"cr0ea_tipodeaula")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =100
+            Required: =false
+            Update: =DataCardValue_tipoDeAula.Selected.Value
+            Width: =800
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey_tipoDeAula As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =34
+                Size: =20
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue_tipoDeAula As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =[Parent.Default]
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                IsSearchable: =false
+                Items: =Choices('Tipo De Aula (_CronogramaDeAulas)')
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 250
+                X: =30
+                Y: =DataCardKey_tipoDeAula.Y + DataCardKey_tipoDeAula.Height + 5
+                ZIndex: =2
+
+            ErrorMessage_tipoDeAula As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue_tipoDeAula.Y + DataCardValue_tipoDeAula.Height
+                ZIndex: =3
+
+            StarVisible_tipoDeAula As label:
+                Align: =Align.Center
+                Height: =DataCardKey_tipoDeAula.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey_tipoDeAula.Y
+                ZIndex: =4
+
+        inicioAula_DataCard_MarcacaoAula As typedDataCard.dateTimeEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_inicioaula"
+            Default: =ThisItem.'Início da Aula'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_CronogramaDeAulas],DataSourceInfo.DisplayName,"cr0ea_inicioaula")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =100
+            Required: =false
+            Update: =If(Not IsBlank(DateValue_inicioAula.SelectedDate), DateValue_inicioAula.SelectedDate + Time(Value(HourValue_inicioAula.Selected.Value), Value(MinuteValue_inicioAula.Selected.Value), 0))
+            Width: =800
+            X: =0
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey_inicioAula As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =34
+                Size: =20
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DateValue_inicioAula As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultDate: =Parent.Default
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                Size: =20
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =(Parent.Width - 60) / 2
+                X: =30
+                Y: =DataCardKey_inicioAula.Y + DataCardKey_inicioAula.Height + 5
+                ZIndex: =2
+
+            HourValue_inicioAula As dropdown:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Text(Hour(Parent.Default),"00")
+                DisplayMode: =Parent.DisplayMode
+                Height: =DateValue_inicioAula.Height
+                Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
+                PaddingBottom: =5
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PaddingRight: =5
+                PaddingTop: =5
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =DateValue_inicioAula.Width / 2 - 10
+                X: =DateValue_inicioAula.X + DateValue_inicioAula.Width + 10
+                Y: =DateValue_inicioAula.Y
+                ZIndex: =3
+
+            Separator_inicioAula As label:
+                Align: =Align.Center
+                FontWeight: =FontWeight.Bold
+                Height: =HourValue_inicioAula.Height
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: |-
+                    =":"
+                Width: =10
+                Wrap: =false
+                X: =HourValue_inicioAula.X + HourValue_inicioAula.Width
+                Y: =HourValue_inicioAula.Y
+                ZIndex: =4
+
+            MinuteValue_inicioAula As dropdown:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Text(Minute(Parent.Default),"00")
+                DisplayMode: =Parent.DisplayMode
+                Height: =HourValue_inicioAula.Height
+                Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
+                PaddingBottom: =5
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PaddingRight: =5
+                PaddingTop: =5
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =HourValue_inicioAula.Width
+                X: =HourValue_inicioAula.X + HourValue_inicioAula.Width + Separator_inicioAula.Width
+                Y: =HourValue_inicioAula.Y
+                ZIndex: =5
+
+            ErrorMessage_inicioAula As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =HourValue_inicioAula.Y + HourValue_inicioAula.Height
+                ZIndex: =6
+
+            StarVisible_inicioAula As label:
+                Align: =Align.Center
+                Height: =DataCardKey_inicioAula.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey_inicioAula.Y
+                ZIndex: =7
+
+        fimAula_DataCard_MarcacaoAula As typedDataCard.dateTimeEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_fimaula"
+            Default: =ThisItem.'Final da Aula'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_CronogramaDeAulas],DataSourceInfo.DisplayName,"cr0ea_fimaula")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =100
+            Required: =false
+            Update: =If(Not IsBlank(DateValue_fimAula.SelectedDate), DateValue_fimAula.SelectedDate + Time(Value(HourValue_fimAula.Selected.Value), Value(MinuteValue_fimAula.Selected.Value), 0))
+            Width: =800
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey_fimAula As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =34
+                Size: =20
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DateValue_fimAula As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultDate: =DateValue_inicioAula
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                Size: =20
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =(Parent.Width - 60) / 2
+                X: =30
+                Y: =DataCardKey_fimAula.Y + DataCardKey_fimAula.Height + 5
+                ZIndex: =2
+
+            HourValue_fimAula As dropdown:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Text((Value(HourValue_inicioAula.SelectedText.Value) + 1),"00")
+                DisplayMode: =Parent.DisplayMode
+                Height: =DateValue_fimAula.Height
+                Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
+                PaddingBottom: =5
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PaddingRight: =5
+                PaddingTop: =5
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =DateValue_fimAula.Width / 2 - 10
+                X: =410
+                Y: =62
+                ZIndex: =3
+
+            Separator_fimAula As label:
+                Align: =Align.Center
+                FontWeight: =FontWeight.Bold
+                Height: =HourValue_fimAula.Height
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: |-
+                    =":"
+                Width: =10
+                Wrap: =false
+                X: =HourValue_fimAula.X + HourValue_fimAula.Width
+                Y: =HourValue_fimAula.Y
+                ZIndex: =4
+
+            MinuteValue_fimAula As dropdown:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Text(Minute(Parent.Default),"00")
+                DisplayMode: =Parent.DisplayMode
+                Height: =HourValue_fimAula.Height
+                Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
+                PaddingBottom: =5
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PaddingRight: =5
+                PaddingTop: =5
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =HourValue_fimAula.Width
+                X: =HourValue_fimAula.X + HourValue_fimAula.Width + Separator_fimAula.Width
+                Y: =HourValue_fimAula.Y
+                ZIndex: =5
+
+            ErrorMessage_fimAula As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =HourValue_fimAula.Y + HourValue_fimAula.Height
+                ZIndex: =6
+
+            StarVisible_fimAula As label:
+                Align: =Align.Center
+                Height: =DataCardKey_fimAula.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey_fimAula.Y
+                ZIndex: =7
+
+        Funcionário_DataCard_MarcacaoAula As typedDataCard.comboBoxEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_id_funcionario"
+            Default: =ThisItem.Funcionário
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_CronogramaDeAulas],DataSourceInfo.DisplayName,"cr0ea_id_funcionario")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue_Funcionário.Selected
+            Width: =800
+            X: =0
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey_Funcionário As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue_Funcionário As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["cr0ea_nome"]
+                DisplayMode: =Parent.DisplayMode
+                InputTextPlaceholder: =""
+                Items: =Choices([@_CronogramaDeAulas].Funcionário)
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["cr0ea_id_funcionario"]
+                SearchItems: =Search(Choices([@_CronogramaDeAulas].Funcionário),DataCardValue_Funcionário.SearchText,"cr0ea_id_funcionario")
+                SelectMultiple: =false
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey_Funcionário.Y + DataCardKey_Funcionário.Height + 5
+                ZIndex: =2
+
+            ErrorMessage_Funcionário As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue_Funcionário.Y + DataCardValue_Funcionário.Height
+                ZIndex: =3
+
+            StarVisible_Funcionário As label:
+                Align: =Align.Center
+                Height: =DataCardKey_Funcionário.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey_Funcionário.Y
+                ZIndex: =4
+
+        "'Inicio Aula Numero_DataCard_MarcacaoAula' As typedDataCard.numberEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_inicioaulanumero"
+            Default: =ThisItem.'Inicio Aula Numero'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_CronogramaDeAulas],DataSourceInfo.DisplayName,"cr0ea_inicioaulanumero")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =150
+            Required: =false
+            Update: =Value('DataCardValue_Inicio Aula Numero'.Text)
+            Visible: =true
+            Width: =800
+            X: =0
+            Y: =4
+            ZIndex: =1
+
+            "'DataCardKey_Inicio Aula Numero' As label":
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            "'DataCardValue_Inicio Aula Numero' As text":
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: |-
+                    =Value(
+                        Text(
+                            DateValue_inicioAula.SelectedDate,
+                            "yyyymmdd"
+                        )
+                    )
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Format: =TextFormat.Number
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: ='DataCardKey_Inicio Aula Numero'.Y + 'DataCardKey_Inicio Aula Numero'.Height + 5
+                ZIndex: =2
+
+            "'ErrorMessage_Inicio Aula Numero' As label":
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: ='DataCardValue_Inicio Aula Numero'.Y + 'DataCardValue_Inicio Aula Numero'.Height
+                ZIndex: =3
+
+            "'StarVisible_Inicio Aula Numero' As label":
+                Align: =Align.Center
+                Height: ='DataCardKey_Inicio Aula Numero'.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: ='DataCardKey_Inicio Aula Numero'.Y
+                ZIndex: =4
+
+    Ico_Home_MarcacaoAula As icon.Home:
+        Color: =RGBA(245, 208, 0, 1)
+        HoverBorderColor: =
+        HoverColor: =RGBA(252, 65, 123, 1)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Icon: =Icon.Home
+        OnSelect: =Navigate(ScreenFuncionario);
+        X: =40
+        Y: =40
+        ZIndex: =14
+
+    FullTriangleSet_MarcacaoAula As group:
+        Height: =5
+        Width: =5
+        X: =100
+        Y: =100
+        ZIndex: =14
+
+        Img_TriangSet2_15 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            X: =1062
+            Y: =480
+            ZIndex: =1
+
+        Img_TriangPurple_13 As image:
+            Height: =57
+            Image: =TrianguloRoxoLeft
+            Transparency: =0.5
+            Width: =58
+            X: =1071
+            Y: =595
+            ZIndex: =2
+
+        Img_larger_14 As image:
+            Height: =216
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =170
+            Y: =549
+            ZIndex: =3
+
+        Img_small_14 As image:
+            Height: =50
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =50
+            X: =60
+            Y: =586
+            ZIndex: =4
+
+        Img_TriangSet1_15 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            ZIndex: =5
+
+        Img_combo_YellPinkTriang2_8 As image:
+            Image: =TriangulosAmareloRosa
+            Transparency: =0.3
+            X: =238
+            Y: =319
+            ZIndex: =6
+
+        Img_tri_AzulClaro_15 As image:
+            Image: =TrianguloAzul
+            Transparency: =0.4
+            X: =104
+            Y: =298
+            ZIndex: =7
+
+        Img_tri_AzulNavy_15 As image:
+            Image: =TrianguloNavy180
+            Transparency: =0.4
+            X: =132
+            Y: =319
+            ZIndex: =8
+
+        Img_combo_YellPinkTriang1_6 As image:
+            Height: =150
+            Image: =TriangulosAmareloRosa
+            Transparency: =0.4
+            Width: =150
+            X: =912
+            Y: =80
+            ZIndex: =9
+

@@ -1,0 +1,156 @@
+ScreenFuncionario As screen:
+    BackgroundImage: ='Untitled-2'
+    Fill: =RGBA(20, 52, 84, 1)
+
+    btn_registoNovoMembro As button:
+        Fill: =RGBA(245, 208, 0, 1)
+        Height: =210
+        OnSelect: =Navigate(ScreenRegistoMembros)
+        Size: =23
+        Text: ="Registo Novo Membro"
+        Width: =340
+        X: =735
+        Y: =198
+        ZIndex: =11
+
+    btn_registarNovosProfessores As button:
+        Fill: =RGBA(29, 157, 255, 1)
+        Height: =210
+        OnSelect: =Navigate(ScreenRegistoFuncionario)
+        Size: =23
+        Text: ="Registar Novos Professores"
+        Width: =340
+        X: =327
+        Y: =198
+        ZIndex: =12
+
+    btn_marcacaoAula As button:
+        Fill: =RGBA(252, 65, 123, 1)
+        Height: =209
+        OnSelect: =Navigate(ScreenMarcacaoAula)
+        Size: =23
+        Text: ="Marcação Aulas"
+        Width: =340
+        X: =537
+        Y: =444
+        ZIndex: =13
+
+    lbl_bemVindo As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =66
+        Size: =25
+        Text: =$"Bem Vindo {var_id_funcionario.Nome}"
+        Width: =374
+        Y: =9
+        ZIndex: =14
+
+    lbl_paginaInicial As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =62
+        Size: =20
+        Text: |-
+            ="Página Inicial:"
+        Width: =239
+        X: =68
+        Y: =92
+        ZIndex: =15
+
+    Btn_nav_Login As button:
+        Color: =RGBA(20, 52, 84, 1)
+        Fill: =RGBA(245, 208, 0, 1)
+        Height: =50
+        OnSelect: =Navigate(ScreenLogin)
+        Text: ="LOGIN"
+        Width: =150
+        X: =1024
+        Y: =22
+        ZIndex: =17
+
+    img_logo_ScreenFuncionario As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =18
+
+        img_logo2 As image:
+            Height: =44
+            Image: =Imagem2
+            X: =1263
+            Y: =9
+            ZIndex: =10
+
+        img_serviceFitness2 As image:
+            Height: =32
+            Image: =ServiceFitness
+            X: =1263
+            Y: =53
+            ZIndex: =16
+
+    FullTriangleSet_ScreenFuncionario As group:
+        Height: =5
+        Width: =5
+        X: =100
+        Y: =1
+        ZIndex: =30
+
+        Img_TriangSet2_3 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            X: =1062
+            Y: =481
+            ZIndex: =1
+
+        Img_TriangPurple_3 As image:
+            Height: =57
+            Image: =TrianguloRoxoLeft
+            Transparency: =0.5
+            Width: =58
+            X: =1071
+            Y: =596
+            ZIndex: =2
+
+        Img_larger_3 As image:
+            Height: =216
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =170
+            Y: =550
+            ZIndex: =3
+
+        Img_small_3 As image:
+            Height: =50
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =50
+            X: =60
+            Y: =587
+            ZIndex: =4
+
+        Img_TriangSet1_3 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            Y: =1
+            ZIndex: =5
+
+        Img_tri_AzulClaro_3 As image:
+            Image: =TrianguloAzul
+            Transparency: =0.4
+            X: =104
+            Y: =299
+            ZIndex: =7
+
+        Img_tri_AzulNavy_3 As image:
+            Image: =TrianguloNavy180
+            Transparency: =0.4
+            X: =132
+            Y: =320
+            ZIndex: =8
+

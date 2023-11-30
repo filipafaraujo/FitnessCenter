@@ -1,0 +1,748 @@
+ScreenRegistoFuncionario As screen:
+    BackgroundImage: ='Untitled-2'
+    Fill: =RGBA(20, 52, 84, 1)
+    OnVisible: =Set(VarOpenDialogFuncionario,false)
+
+    btn_submeter__RegistoFuncionario As button:
+        Color: =RGBA(20, 52, 84, 1)
+        Fill: =RGBA(245, 208, 0, 1)
+        Height: =100
+        OnSelect: |
+            =Switch(
+                true,
+                !IsMatch(DataCardValue9.Text, Match.Email),
+                    Notify("Email inválido", NotificationType.Error),
+                Not(IsMatch(DataCardValuetelemovelRegistoFuncionario.Text, "\d{9}") && !IsBlank(DataCardValuetelemovelRegistoFuncionario.Text)),
+                    Notify("Número de telemóvel inválido", NotificationType.Error),
+                true,  // Default case
+                    /* If no error occurred, submit the form */
+                    SubmitForm(FormRegistoFuncionario);
+                    ResetForm(FormRegistoFuncionario);
+                    Set(id_new_funcionario, Last(_Funcionarios));
+                    Set(VarOpenDialogFuncionario, true);
+                    Notify("Funcionário adicionado com Sucesso", NotificationType.Success)
+            )
+        Size: =20
+        Text: |-
+            ="Submeter
+            "
+        Width: =250
+        X: =583
+        Y: =587
+        ZIndex: =10
+
+    FormRegistoFuncionario As form:
+        DataSource: =_Funcionarios
+        DefaultMode: =FormMode.New
+        Height: =356
+        Width: =1082
+        X: =187
+        Y: =193
+        ZIndex: =11
+
+        dataContratacao_DataCard_RegistoFuncionario As typedDataCard.dateTimeEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_datacontratacao"
+            Default: =ThisItem.dataContratacao
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Funcionarios],DataSourceInfo.DisplayName,"cr0ea_datacontratacao")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =If(Not IsBlank(DateValue_contratacaoRegistoFuncionario.SelectedDate), DateValue_contratacaoRegistoFuncionario.SelectedDate)
+            Width: =360
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey_contratacaoRegistoFuncionario As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: ="Data Contratação"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DateValue_contratacaoRegistoFuncionario As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultDate: =Parent.Default
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =300
+                X: =30
+                Y: =DataCardKey_contratacaoRegistoFuncionario.Y + DataCardKey_contratacaoRegistoFuncionario.Height + 5
+                ZIndex: =2
+
+            ErrorMessage_contratacaoRegistoFuncionario As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DateValue_contratacaoRegistoFuncionario.Y + DateValue_contratacaoRegistoFuncionario.Height
+                ZIndex: =6
+
+            StarVisible_contratacaoRegistoFuncionario As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =DataCardKey_contratacaoRegistoFuncionario.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DateValue_contratacaoRegistoFuncionario.Y
+                ZIndex: =7
+
+        nome_DataCard_RegistoFuncionario As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_nome"
+            Default: =ThisItem.Nome
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Funcionarios],DataSourceInfo.DisplayName,"cr0ea_nome")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@_Funcionarios], DataSourceInfo.MaxLength, "cr0ea_nome")
+            Required: =true
+            Update: =DataCardValue_nomeRegistoFuncionario.Text
+            Width: =360
+            X: =0
+            Y: =0
+            ZIndex: =5
+
+            DataCardKey_nomeRegistoFuncionario As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: ="Nome"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue_nomeRegistoFuncionario As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey_nomeRegistoFuncionario.Y + DataCardKey_nomeRegistoFuncionario.Height + 5
+                ZIndex: =2
+
+            ErrorMessage_nomeRegistoFuncionario As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue_nomeRegistoFuncionario.Y + DataCardValue_nomeRegistoFuncionario.Height
+                ZIndex: =3
+
+            StarVisible_nomeRegistoFuncionario As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =DataCardKey_nomeRegistoFuncionario.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey_nomeRegistoFuncionario.Y
+                ZIndex: =4
+
+        endereco_DataCard_RegistoFuncionario As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_endereco"
+            Default: =ThisItem.endereco
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Funcionarios],DataSourceInfo.DisplayName,"cr0ea_endereco")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =64
+            MaxLength: =DataSourceInfo([@_Funcionarios], DataSourceInfo.MaxLength, "cr0ea_endereco")
+            Required: =true
+            Update: =txt_morada_RegistoFuncionario.Text
+            Width: =360
+            X: =1
+            Y: =0
+            ZIndex: =5
+
+            lbl_morada_RegistoFuncionario As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: ="Morada"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            txt_morada_RegistoFuncionario As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =lbl_morada_RegistoFuncionario.Y + lbl_morada_RegistoFuncionario.Height + 5
+                ZIndex: =2
+
+            ErrorMessage_morada_RegistoFuncionario As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =txt_morada_RegistoFuncionario.Y + txt_morada_RegistoFuncionario.Height
+                ZIndex: =3
+
+            StarVisible_morada_RegistoFuncionario As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =lbl_morada_RegistoFuncionario.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =lbl_morada_RegistoFuncionario.Y
+                ZIndex: =4
+
+        email_DataCard_RegistoFuncionario As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_email"
+            Default: =ThisItem.email
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Funcionarios],DataSourceInfo.DisplayName,"cr0ea_email")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@_Funcionarios], DataSourceInfo.MaxLength, "cr0ea_email")
+            Required: =true
+            Update: =DataCardValue9.Text
+            Width: =360
+            X: =2
+            Y: =0
+            ZIndex: =5
+
+            DataCardKey10 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: ="E-mail"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue9 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey10.Y + DataCardKey10.Height + 5
+                ZIndex: =2
+
+            ErrorMessage8 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue9.Y + DataCardValue9.Height
+                ZIndex: =3
+
+            StarVisible5 As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =DataCardKey10.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey10.Y
+                ZIndex: =4
+
+        telemovel_DataCard_RegistoFuncionario As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_telemovel"
+            Default: =ThisItem.telemovel
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Funcionarios],DataSourceInfo.DisplayName,"cr0ea_telemovel")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@_Funcionarios], DataSourceInfo.MaxLength, "cr0ea_telemovel")
+            Required: =true
+            Update: =DataCardValuetelemovelRegistoFuncionario.Text
+            Width: =360
+            X: =0
+            Y: =1
+            ZIndex: =5
+
+            DataCardKey_telemovelRegistoFuncionario As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: ="Telemóvel"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValuetelemovelRegistoFuncionario As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey_telemovelRegistoFuncionario.Y + DataCardKey_telemovelRegistoFuncionario.Height + 5
+                ZIndex: =2
+
+            ErrorMessage_telemovelRegistoFuncionario As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValuetelemovelRegistoFuncionario.Y + DataCardValuetelemovelRegistoFuncionario.Height
+                ZIndex: =3
+
+            StarVisible_telemovelRegistoFuncionario As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =DataCardKey_telemovelRegistoFuncionario.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey_telemovelRegistoFuncionario.Y
+                ZIndex: =4
+
+        Cargo_DataCard_RegistoFuncionario As typedDataCard.comboBoxOptionSetSingleEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_cargo"
+            Default: =ThisItem.Cargo
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Funcionarios],DataSourceInfo.DisplayName,"cr0ea_cargo")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =DataCardValue_cargoRegistoFuncionario.Selected.Value
+            Width: =360
+            X: =1
+            Y: =1
+            ZIndex: =5
+
+            DataCardKey_cargoRegistoFuncionario As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue_cargoRegistoFuncionario As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =[Parent.Default]
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                IsSearchable: =false
+                Items: =Choices('Cargo (_Funcionarios)')
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey_cargoRegistoFuncionario.Y + DataCardKey_cargoRegistoFuncionario.Height + 5
+                ZIndex: =2
+
+            ErrorMessage_cargoRegistoFuncionario As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue_cargoRegistoFuncionario.Y + DataCardValue_cargoRegistoFuncionario.Height
+                ZIndex: =3
+
+            StarVisible_cargoRegistoFuncionario As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =DataCardKey_cargoRegistoFuncionario.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey_cargoRegistoFuncionario.Y
+                ZIndex: =4
+
+        salario_DataCard_RegistoFuncionario As typedDataCard.currencyEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_salario"
+            Default: =ThisItem.salario
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Funcionarios],DataSourceInfo.DisplayName,"cr0ea_salario")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =Value(DataCardValue_salarioRegistoFuncionario.Text)
+            Width: =360
+            X: =2
+            Y: =1
+            ZIndex: =5
+
+            DataCardKey_salarioRegistoFuncionario As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: ="Salário"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue_salarioRegistoFuncionario As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Format: =TextFormat.Number
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey_salarioRegistoFuncionario.Y + DataCardKey_salarioRegistoFuncionario.Height + 5
+                ZIndex: =2
+
+            ErrorMessage_salarioRegistoFuncionario As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue_salarioRegistoFuncionario.Y + DataCardValue_salarioRegistoFuncionario.Height
+                ZIndex: =3
+
+            StarVisible_salarioRegistoFuncionario As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =DataCardKey_salarioRegistoFuncionario.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey_salarioRegistoFuncionario.Y
+                ZIndex: =4
+
+    lbl_registoFuncionário As label:
+        Align: =Align.Center
+        Color: =Color.White
+        FontWeight: =FontWeight.Bold
+        Height: =76
+        Size: =40
+        Text: ="Registo de Novo Funcionário"
+        Width: =1170
+        X: =87
+        Y: =108
+        ZIndex: =12
+
+    IconBack_RegistoFuncionario As icon.BackArrow:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: |-
+            =
+            Back()
+        X: =23
+        Y: =16
+        ZIndex: =13
+
+    DialogContainer As groupContainer.verticalAutoLayoutContainer:
+        Fill: =RGBA(255, 255, 255, 0.3)
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutJustifyContent: =LayoutJustifyContent.Center
+        LayoutMode: =LayoutMode.Auto
+        Visible: =VarOpenDialogFuncionario
+        Width: =Parent.Width
+        ZIndex: =14
+
+        Container1 As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            Fill: =RGBA(255, 255, 255, 1)
+            FillPortions: =0
+            Height: =300
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =1
+
+            Container2 As groupContainer.manualLayoutContainer:
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                ZIndex: =1
+
+                lblTitulo As label:
+                    Size: =12
+                    Text: ="Para concluir o registo defina um username e Password "
+                    Width: =442
+                    X: =30
+                    Y: =20
+                    ZIndex: =1
+
+                txtUsername As text:
+                    Default: =""
+                    X: =165
+                    Y: =82
+                    ZIndex: =2
+
+                txtPassword As text:
+                    Default: =""
+                    X: =165
+                    Y: =145
+                    ZIndex: =3
+
+                lblUsername As label:
+                    Text: ="Username"
+                    Width: =100
+                    X: =30
+                    Y: =82
+                    ZIndex: =4
+
+                lblUsername_1 As label:
+                    Text: |-
+                        ="Password
+                        "
+                    Width: =100
+                    X: =30
+                    Y: =145
+                    ZIndex: =5
+
+                Button1 As button:
+                    Fill: =RGBA(50, 86, 160, 1)
+                    OnSelect: |+
+                        =If(
+                            !IsBlank(txtUsername.Text) && !IsBlank(txtPassword.Text),
+                            /* Both fields are not blank, proceed with the uniqueness check and Patch operation */
+                            If(
+                                CountRows(Filter(_Logins, id_login = txtUsername.Text)) = 0,
+                                /* The id_login is unique, perform the Patch operation */
+                                Patch(
+                                    _Logins,
+                                    Defaults(_Logins),
+                                    {
+                                        id_login: txtUsername.Text,
+                                        id_funcionario: LookUp(_Funcionarios, id_funcionario = id_new_funcionario.id_funcionario),
+                                        password: txtPassword.Text
+                                    }
+                                );
+                                Set(VarOpenDialogFuncionario, false),
+                                /* The id_login is not unique, display an error message to the user */
+                                Notify("Username já Existe.", NotificationType.Error)
+                            ),
+                            /* One or both fields are blank, display an error message to the user */
+                            Notify("Preencha tos dos campos.", NotificationType.Error)
+                        );
+                        Reset(txtPassword);
+                        Reset(txtUsername);
+                        Set(var_id_funcionario, Blank());
+                        
+                    Text: ="Concuir"
+                    X: =171
+                    Y: =225
+                    ZIndex: =6
+
+                txt_idNewFuncionario As text:
+                    Default: =id_new_funcionario.id_funcionario
+                    Visible: =false
+                    Width: =79
+                    X: =393
+                    Y: =225
+                    ZIndex: =7
+
+    Img_Group_RegistoFuncionario As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =17
+
+        img_serviceFitness8 As image:
+            Height: =20
+            Image: =ServiceFitness
+            Width: =104
+            X: =1246
+            Y: =74
+            ZIndex: =8
+
+        img_logo8 As image:
+            Height: =48
+            Image: =Imagem2
+            Width: =104
+            X: =1246
+            Y: =16
+            ZIndex: =9
+
+    FullTriangleSet_ScreenRegFuncionario As group:
+        Height: =5
+        Width: =5
+        X: =100
+        Y: =1
+        ZIndex: =19
+
+        Img_TriangSet2_9 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            X: =1062
+            Y: =481
+            ZIndex: =1
+
+        Img_TriangPurple_7 As image:
+            Height: =57
+            Image: =TrianguloRoxoLeft
+            Transparency: =0.5
+            Width: =58
+            X: =1071
+            Y: =596
+            ZIndex: =2
+
+        Img_larger_8 As image:
+            Height: =216
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =170
+            Y: =550
+            ZIndex: =3
+
+        Img_small_8 As image:
+            Height: =50
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =50
+            X: =60
+            Y: =587
+            ZIndex: =4
+
+        Img_TriangSet1_9 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            Y: =1
+            ZIndex: =5
+
+        Img_tri_AzulClaro_9 As image:
+            Image: =TrianguloAzul
+            Transparency: =0.4
+            X: =837
+            Y: =466
+            ZIndex: =6
+
+        Img_tri_AzulNavy_9 As image:
+            Image: =TrianguloNavy180
+            Transparency: =0.4
+            X: =865
+            Y: =487
+            ZIndex: =7
+

@@ -1,0 +1,850 @@
+ScreenRegistoMembros As screen:
+    BackgroundImage: ='Untitled-2'
+    Fill: =RGBA(20, 52, 84, 1)
+
+    Checkbox_RegistoMembros As checkbox:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =116
+        HoverColor: =RGBA(255, 255, 255, 1)
+        Size: =20
+        Text: ="Permissão do Encarregado de Educação"
+        Visible: |-
+            =If(
+                Year(
+                    Today()
+                    ) 
+                    - 
+                    Year(DateValue_aniversario_infoRegistoMembros) < 18 And DateDiff(DateValue_aniversario_infoRegistoMembros, Today(), TimeUnit.Days) >= 0, true, false
+            )
+        Width: =413
+        X: =918
+        Y: =442
+        ZIndex: =11
+
+    btn_submeter_RegistoMembros As button:
+        Color: =RGBA(20, 52, 84, 1)
+        Fill: =RGBA(245, 208, 0, 1)
+        Height: =100
+        OnSelect: |-
+            =If(
+                Year(Today()) - Year(DateValue_aniversario_infoRegistoMembros) >= 18 
+                || (Year(Today()) - Year(DateValue_aniversario_infoRegistoMembros) < 18 && Checkbox_RegistoMembros.Value = true),
+                SubmitForm(Form_infoRegistoMembros) && SubmitForm(Form_loginRegistoMembros) && Notify("Membro Adicionado com Sucesso", NotificationType.Success) && Navigate(ScreenFuncionario,ScreenTransition.Fade),
+                Notify("Erro na Criação de Membro", NotificationType.Error)
+            )
+        Size: =20
+        Text: |-
+            ="Submeter
+            "
+        Width: =250
+        X: =529
+        Y: =621
+        ZIndex: =12
+
+    Form_infoRegistoMembros As form:
+        DataSource: =_Membros
+        DefaultMode: =FormMode.New
+        Height: =360
+        Width: =1286
+        X: =49
+        Y: =128
+        ZIndex: =13
+
+        nome_DataCard_infoRegistoMembros As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_nome"
+            Default: =ThisItem.nome
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Membros],DataSourceInfo.DisplayName,"cr0ea_nome")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@_Membros], DataSourceInfo.MaxLength, "cr0ea_nome")
+            Required: =true
+            Update: =DataCardValue_infoRegistoMembros.Text
+            Width: =428
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey_infoRegistoMembros As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: ="Nome"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue_infoRegistoMembros As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey_infoRegistoMembros.Y + DataCardKey_infoRegistoMembros.Height + 5
+                ZIndex: =2
+
+            ErrorMessage_infoRegistoMembros As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue_infoRegistoMembros.Y + DataCardValue_infoRegistoMembros.Height
+                ZIndex: =3
+
+        email_DataCard_infoRegistoMembros As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_email"
+            Default: =ThisItem.email
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Membros],DataSourceInfo.DisplayName,"cr0ea_email")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@_Membros], DataSourceInfo.MaxLength, "cr0ea_email")
+            Required: =true
+            Update: =DataCardValue_email__infoRegistoMembros.Text
+            Width: =428
+            X: =1
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey_email__infoRegistoMembros As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: ="E-Mail"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue_email__infoRegistoMembros As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey_email__infoRegistoMembros.Y + DataCardKey_email__infoRegistoMembros.Height + 5
+                ZIndex: =2
+
+            ErrorMessage_email__infoRegistoMembros As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue_email__infoRegistoMembros.Y + DataCardValue_email__infoRegistoMembros.Height
+                ZIndex: =3
+
+        endereco_DataCard__infoRegistoMembros As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_endereco"
+            Default: =ThisItem.endereco
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Membros],DataSourceInfo.DisplayName,"cr0ea_endereco")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@_Membros], DataSourceInfo.MaxLength, "cr0ea_endereco")
+            Required: =true
+            Update: =DataCardValue_morada__infoRegistoMembros.Text
+            Width: =428
+            X: =2
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey_morada__infoRegistoMembros As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: ="Morada"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =27
+                ZIndex: =1
+
+            DataCardValue_morada__infoRegistoMembros As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey_morada__infoRegistoMembros.Y + DataCardKey_morada__infoRegistoMembros.Height + 5
+                ZIndex: =2
+
+            ErrorMessage_morada__infoRegistoMembros As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue_morada__infoRegistoMembros.Y + DataCardValue_morada__infoRegistoMembros.Height
+                ZIndex: =3
+
+        genero_DataCard__infoRegistoMembros As typedDataCard.comboBoxOptionSetSingleEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_genero"
+            Default: =ThisItem.genero
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Membros],DataSourceInfo.DisplayName,"cr0ea_genero")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =DataCardValue_genero__infoRegistoMembros.Selected.Value
+            Width: =428
+            X: =0
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey_genero__infoRegistoMembros As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: ="Género"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue_genero__infoRegistoMembros As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =[Parent.Default]
+                DisplayFields: =["Value","Feminino","Não Binário","Não Quero Revelar"]
+                DisplayMode: =Parent.DisplayMode
+                IsSearchable: =false
+                Items: =Choices('genero (_Membros)')
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey_genero__infoRegistoMembros.Y + DataCardKey_genero__infoRegistoMembros.Height + 5
+                ZIndex: =2
+
+            ErrorMessage_genero__infoRegistoMembros As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue_genero__infoRegistoMembros.Y + DataCardValue_genero__infoRegistoMembros.Height
+                ZIndex: =3
+
+            StarVisible_genero__infoRegistoMembros As label:
+                Align: =Align.Center
+                Height: =DataCardKey_genero__infoRegistoMembros.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey_genero__infoRegistoMembros.Y
+                ZIndex: =4
+
+        dataNascimento_DataCard__infoRegistoMembros As typedDataCard.dateTimeEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_datanascimento"
+            Default: =ThisItem.dataNascimento
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Membros],DataSourceInfo.DisplayName,"cr0ea_datanascimento")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =111
+            Required: =true
+            Update: =If(Not IsBlank(DateValue_aniversario_infoRegistoMembros.SelectedDate), DateValue_aniversario_infoRegistoMembros.SelectedDate)
+            Width: =428
+            X: =1
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey_aniversario_infoRegistoMembros As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =47
+                Size: =20
+                Text: ="Data de Nascimento"
+                Width: =263
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DateValue_aniversario_infoRegistoMembros As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultDate: =Parent.Default
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Height: =45
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                Size: =20
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =188
+                X: =30
+                Y: =57
+                ZIndex: =2
+
+            Separator_aniversario_infoRegistoMembros As label:
+                Align: =Align.Center
+                FontWeight: =FontWeight.Bold
+                Height: =
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =
+                Width: =10
+                Wrap: =false
+                X: =
+                Y: =
+                ZIndex: =4
+
+            ErrorMessage_aniversario_infoRegistoMembros As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =
+                ZIndex: =6
+
+        Ativo_DataCard_infoRegistoMembros As typedDataCard.comboBoxOptionSetSingleEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_ativo"
+            Default: =ThisItem.Ativo
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Membros],DataSourceInfo.DisplayName,"cr0ea_ativo")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =DataCardValue_ativo_infoRegistoMembros.Selected.Value
+            Width: =428
+            X: =2
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey_ativo_infoRegistoMembros As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =6
+                ZIndex: =1
+
+            DataCardValue_ativo_infoRegistoMembros As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =[Parent.Default]
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                IsSearchable: =false
+                Items: =Choices('Ativo (_Membros)')
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =33
+                Y: =60
+                ZIndex: =2
+
+            ErrorMessage_ativo_infoRegistoMembros As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue_ativo_infoRegistoMembros.Y + DataCardValue_ativo_infoRegistoMembros.Height
+                ZIndex: =3
+
+        dataInscricao_DataCard__infoRegistoMembros As typedDataCard.dateTimeEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_datainscricao"
+            Default: =ThisItem.dataInscricao
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Membros],DataSourceInfo.DisplayName,"cr0ea_datainscricao")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =If(Not IsBlank(DateValue_inscricao_infoRegistoMembros.SelectedDate), DateValue_inscricao_infoRegistoMembros.SelectedDate)
+            Width: =428
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey_inscricao_infoRegistoMembros As label:
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =35
+                Size: =20
+                Text: ="Data de Inscrição"
+                Width: =278
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DateValue_inscricao_infoRegistoMembros As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Height: =45
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                Size: =20
+                StartOfWeek: =StartOfWeek.Monday
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =188
+                X: =30
+                Y: =60
+                ZIndex: =2
+
+            Separator_inscricao_infoRegistoMembros As label:
+                Align: =Align.Center
+                FontWeight: =FontWeight.Bold
+                Height: =
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =
+                Width: =10
+                Wrap: =false
+                X: =
+                Y: =
+                ZIndex: =4
+
+            MinuteValue_inscricao_infoRegistoMembros As dropdown:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Text(Minute(Parent.Default),"00")
+                DisplayMode: =Parent.DisplayMode
+                Height: =
+                Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
+                PaddingBottom: =5
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PaddingRight: =5
+                PaddingTop: =5
+                Tooltip: =Parent.DisplayName
+                Width: =
+                X: =
+                Y: =
+                ZIndex: =5
+
+            ErrorMessage_inscricao_infoRegistoMembros As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =
+                ZIndex: =6
+
+            StarVisible_inscricao_infoRegistoMembros As label:
+                Align: =Align.Center
+                Height: =DataCardKey_inscricao_infoRegistoMembros.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey_inscricao_infoRegistoMembros.Y
+                ZIndex: =7
+
+        telemovel_DataCard__infoRegistoMembros As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_telemovel"
+            Default: =ThisItem.telemovel
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Membros],DataSourceInfo.DisplayName,"cr0ea_telemovel")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@_Membros], DataSourceInfo.MaxLength, "cr0ea_telemovel")
+            Required: =true
+            Update: =DataCardValue_telemovel_infoRegistoMembros.Text
+            Width: =428
+            X: =1
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey_telemovel_infoRegistoMembros As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =47
+                Size: =20
+                Text: ="Telemóvel"
+                Width: =148
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue_telemovel_infoRegistoMembros As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =63
+                ZIndex: =2
+
+            ErrorMessage_telemovel_infoRegistoMembros As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue_telemovel_infoRegistoMembros.Y + DataCardValue_telemovel_infoRegistoMembros.Height
+                ZIndex: =3
+
+            StarVisible_telemovel_infoRegistoMembros As label:
+                Align: =Align.Center
+                Height: =DataCardKey_telemovel_infoRegistoMembros.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey_telemovel_infoRegistoMembros.Y
+                ZIndex: =4
+
+    Form_loginRegistoMembros As form:
+        DataSource: =_Logins
+        DefaultMode: =FormMode.New
+        Height: =130
+        Width: =1288
+        X: =60
+        Y: =476
+        ZIndex: =14
+
+        password_DataCard_RegistoMembros As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_password"
+            Default: =ThisItem.password
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Logins],DataSourceInfo.DisplayName,"cr0ea_password")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@_Logins], DataSourceInfo.MaxLength, "cr0ea_password")
+            Required: =true
+            Update: =DataCardValue_pw_RegistoMembros.Text
+            Width: =429
+            X: =1
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey_pw_RegistoMembros As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: ="Password"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =5
+                ZIndex: =1
+
+            DataCardValue_pw_RegistoMembros As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =67
+                ZIndex: =2
+
+            ErrorMessage_pw_RegistoMembros As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue_pw_RegistoMembros.Y + DataCardValue_pw_RegistoMembros.Height
+                ZIndex: =3
+
+        id_login_DataCard_RegistoMembros As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_id_login"
+            Default: =ThisItem.id_login
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@_Logins],DataSourceInfo.DisplayName,"cr0ea_id_login")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@_Logins], DataSourceInfo.MaxLength, "cr0ea_id_login")
+            Required: =true
+            Update: =DataCardValue_RegistoMembros.Text
+            Width: =429
+            X: =0
+            Y: =0
+            ZIndex: =6
+
+            DataCardKey_RegistoMembros As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Size: =20
+                Text: ="Identificação"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =20
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue_RegistoMembros As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =20
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =16
+                Y: =DataCardKey_RegistoMembros.Y + DataCardKey_RegistoMembros.Height + 5
+                ZIndex: =2
+
+            ErrorMessage_RegistoMembros As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue_RegistoMembros.Y + DataCardValue_RegistoMembros.Height
+                ZIndex: =3
+
+    Ico_back_RegistoMembros As icon.BackArrow:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back()
+        X: =20
+        Y: =20
+        ZIndex: =15
+
+    lbl_registoNovoMembro As label:
+        Align: =Align.Center
+        Color: =Color.White
+        FontWeight: =FontWeight.Bold
+        Height: =76
+        Size: =40
+        Text: ="Registo de Novo Membro"
+        Width: =1170
+        X: =87
+        Y: =40
+        ZIndex: =16
+
+    FullTriangleSet_ScreenRegMembros As group:
+        Height: =5
+        Width: =5
+        X: =100
+        Y: =100
+        ZIndex: =18
+
+        Img_TriangSet2_8 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            X: =1062
+            Y: =480
+            ZIndex: =1
+
+        Img_TriangPurple_6 As image:
+            Height: =57
+            Image: =TrianguloRoxoLeft
+            Transparency: =0.5
+            Width: =58
+            X: =1071
+            Y: =595
+            ZIndex: =2
+
+        Img_larger_7 As image:
+            Height: =216
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =170
+            Y: =549
+            ZIndex: =3
+
+        Img_small_7 As image:
+            Height: =50
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =50
+            X: =60
+            Y: =586
+            ZIndex: =4
+
+        Img_TriangSet1_8 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            ZIndex: =5
+
+        Img_combo_YellPinkTriang2_4 As image:
+            Image: =TriangulosAmareloRosa
+            Transparency: =0.3
+            X: =1004
+            Y: =368
+            ZIndex: =6
+
+        Img_tri_AzulClaro_8 As image:
+            Image: =TrianguloAzul
+            Transparency: =0.5
+            X: =858
+            Y: =355
+            ZIndex: =7
+
+        Img_tri_AzulNavy_8 As image:
+            Image: =TrianguloNavy180
+            Transparency: =0.4
+            X: =886
+            Y: =376
+            ZIndex: =8
+
+    Logo_img_group_RegistoMembros As group:
+        Height: =5
+        Width: =5
+        X: =80
+        Y: =80
+        ZIndex: =18
+
+        img_serviceFitness7 As image:
+            Height: =24
+            Image: =ServiceFitness
+            X: =1258
+            Y: =58
+            ZIndex: =9
+
+        img_logo7 As image:
+            Height: =41
+            Image: =Imagem2
+            X: =1258
+            Y: =17
+            ZIndex: =10
+

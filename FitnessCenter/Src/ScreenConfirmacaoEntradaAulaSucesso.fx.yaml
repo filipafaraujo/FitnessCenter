@@ -1,0 +1,211 @@
+"ScreenConfirmacaoEntradaAulaSucesso As screen.'tabletLayout_Success_ver3.0'":
+    BackgroundImage: ='Untitled-2'
+    Fill: =RGBA(20, 52, 84, 1)
+
+    Ico_Combo_Success_EntradaAulaSucesso As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =6
+
+        Ico_CheckCircle As circle.Circle:
+            Fill: =RGBA(131, 60, 108, 1)
+            Height: =150
+            Width: =150
+            X: =576
+            Y: =239
+            ZIndex: =11
+
+        Ico_Check As icon.Check:
+            Color: =RGBA(245, 208, 0, 1)
+            Height: =Ico_CheckCircle.Height
+            Icon: =Icon.Check
+            PaddingBottom: =Self.PaddingTop
+            PaddingLeft: =Self.PaddingTop
+            PaddingRight: =Self.PaddingTop
+            PaddingTop: =24
+            Width: =Ico_CheckCircle.Width
+            X: =576
+            Y: =239
+            ZIndex: =15
+
+    Logo_ScreenEntradaAulaSucesso As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =7
+
+        img_logo_ScreenMarcacaoSucesso As image:
+            Height: =44
+            Image: =Imagem2
+            X: =1254
+            Y: =9
+            ZIndex: =13
+
+        Img_serviceFitness_ScreenMarcacaoSucesso As image:
+            Height: =27
+            Image: =ServiceFitness
+            X: =1256
+            Y: =53
+            ZIndex: =14
+
+    Img_Treino_EntradaAulaSucesso As image:
+        Image: ='Imagem treino'
+        X: =632
+        Y: =622
+        ZIndex: =16
+
+    lbl_fraseMotivação_EntradaAulaSucesso As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =212
+        Size: =25
+        Text: |-
+            =// Declara a variável ListaFrases
+            First(Shuffle(frase)).cr0ea_frases
+        Width: =813
+        X: =273
+        Y: =419
+        ZIndex: =17
+
+    FullTriangleSet_EntradaAulaSucesso As group:
+        Height: =5
+        Width: =5
+        X: =100
+        Y: =100
+        ZIndex: =17
+
+        Img_TriangSet2 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            X: =1062
+            Y: =480
+            ZIndex: =1
+
+        Img_TriangPurple As image:
+            Height: =57
+            Image: =TrianguloRoxoLeft
+            Transparency: =0.5
+            Width: =58
+            X: =1071
+            Y: =595
+            ZIndex: =2
+
+        Img_larger As image:
+            Height: =216
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =170
+            Y: =549
+            ZIndex: =3
+
+        Img_small As image:
+            Height: =50
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =50
+            X: =60
+            Y: =586
+            ZIndex: =4
+
+        Img_TriangSet1 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            ZIndex: =5
+
+        Img_combo_YellPinkTriang2 As image:
+            Image: =TriangulosAmareloRosa
+            Transparency: =0.3
+            X: =238
+            Y: =319
+            ZIndex: =6
+
+        Img_tri_AzulClaro As image:
+            Image: =TrianguloAzul
+            Transparency: =0.4
+            X: =104
+            Y: =298
+            ZIndex: =7
+
+        Img_tri_AzulNavy As image:
+            Image: =TrianguloNavy180
+            Transparency: =0.4
+            X: =132
+            Y: =319
+            ZIndex: =8
+
+        Img_combo_YellPinkTriang1 As image:
+            Height: =150
+            Image: =TriangulosAmareloRosa
+            Transparency: =0.4
+            Width: =150
+            X: =948
+            Y: =226
+            ZIndex: =10
+
+    Lbl_messageEntradaAulaSucesso As label:
+        Align: =Align.Center
+        AutoHeight: =true
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =Ico_CheckCircle.Height
+        Size: =25
+        Text: |-
+            ="A sua entrada na aula foi efetuada com sucesso!
+            "
+        Width: =Parent.Width * 0.75
+        X: =167
+        Y: =162
+        ZIndex: =18
+
+    Timer_EntradaAulaSucesso As timer:
+        AutoStart: =true
+        Duration: =5000
+        FontWeight: =FontWeight.Lighter
+        OnTimerEnd: |
+            =Navigate(
+                ScreenMembro
+            );
+        Visible: =false
+        X: =80
+        Y: =80
+        ZIndex: =19
+
+    Ico_Home_EntradaAulaSucesso As icon.Home:
+        Color: =RGBA(245, 208, 0, 1)
+        HoverBorderColor: =
+        HoverColor: =RGBA(252, 65, 123, 1)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Icon: =Icon.Home
+        OnSelect: =Navigate(ScreenMembro);
+        X: =40
+        Y: =40
+        ZIndex: =20
+
+    Ico_group_relampagoEntradaAulaSucesso As group:
+        Height: =5
+        Width: =5
+        X: =100
+        Y: =100
+        ZIndex: =21
+
+        Ico_relampagoEntradaAulaComSucesso_2 As icon.LightningBolt:
+            Color: =RGBA(245, 208, 0, 1)
+            Icon: =Icon.LightningBolt
+            X: =1094
+            Y: =485
+            ZIndex: =9
+
+        Ico_relampagoEntradaAulaComSucesso_1 As icon.LightningBolt:
+            Color: =RGBA(245, 208, 0, 1)
+            Icon: =Icon.LightningBolt
+            X: =200
+            Y: =476
+            ZIndex: =12
+

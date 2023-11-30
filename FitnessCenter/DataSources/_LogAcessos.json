@@ -1,0 +1,104 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr0ea__logacessos",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr0ea__logacesso",
+    "MaxGetRowsCount": 2000,
+    "Name": "_LogAcessos",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cr0ea__logacesso_AsyncOperations": "Tarefas de Sistema",
+      "cr0ea__logacesso_BulkDeleteFailures": "Falhas de Eliminação em Massa",
+      "cr0ea__logacesso_DuplicateBaseRecord": "Registos Duplicados (cr0ea__logacesso_DuplicateBaseRecord)",
+      "cr0ea__logacesso_DuplicateMatchingRecord": "Registos Duplicados (cr0ea__logacesso_DuplicateMatchingRecord)",
+      "cr0ea__logacesso_MailboxTrackingFolders": "Pastas de Monitorização Automática da Caixa de Correio",
+      "cr0ea__logacesso_PrincipalObjectAttributeAccesses": "Partilha de Campos",
+      "cr0ea__logacesso_ProcessSession": "Sessões de Processo",
+      "cr0ea__logacesso_SyncErrors": "Erros de Sincronização",
+      "cr0ea__logacessoid": "_LogAcesso",
+      "cr0ea_comentariofeedback": "comentarioFeedback",
+      "cr0ea_entrada": "entrada",
+      "cr0ea_id_Aula": "id_Aula",
+      "cr0ea_Id_membro": "Id_membro",
+      "cr0ea_id_registoacesso": "id_registoAcesso",
+      "cr0ea_rating": "Rating",
+      "cr0ea_ratingfeedback": "ratingFeedback",
+      "cr0ea_saida": "saida",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Número da Versão"
+    },
+    "PreferredName": "_LogAcessos",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "_LogAcessos (Views)",
+    "Name": "_cr0ea__logacesso_views",
+    "RelatedEntityName": "_LogAcessos",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "19d17c4a-d789-48b2-a291-f96453a148dc": "Active _LogAcessos",
+      "2449a093-a136-4443-979c-1a1703d2e4b0": "_LogAcesso Associated View",
+      "488a6783-e186-4eda-ad3a-cf12ca8de9d9": "_LogAcesso Lookup View",
+      "564c451e-e4eb-41bb-8ba4-ff329e3382b2": "Inactive _LogAcessos",
+      "c15c1132-359b-4eb6-86bb-df1fba03094d": "_LogAcesso Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (_LogAcessos)",
+    "Name": "cr0ea__logacesso_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "_LogAcessos"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "_LogAcessos",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (_LogAcessos)",
+    "Name": "cr0ea__logacesso_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "_LogAcessos"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "_LogAcessos",
+    "Type": "OptionSetInfo"
+  }
+]

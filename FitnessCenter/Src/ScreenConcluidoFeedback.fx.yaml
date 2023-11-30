@@ -1,0 +1,200 @@
+"ScreenConcluidoFeedback As screen.'tabletLayout_Success_ver3.0'":
+    BackgroundImage: ='Untitled-2'
+    Fill: =RGBA(20, 52, 84, 1)
+
+    Lbl_SuccessMsgFeedback As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =151
+        Size: =25
+        Text: |-
+            ="O seu Feedback foi submetido com êxito.
+            Obrigado."
+        Width: =1012
+        X: =160
+        Y: =432
+        ZIndex: =14
+
+    Logo_ScreenConcluidoFeedback As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =15
+
+        img_logo_ScreenMarcacaoSucesso_1 As image:
+            Height: =44
+            Image: =Imagem2
+            X: =1254
+            Y: =9
+            ZIndex: =12
+
+        Img_serviceFitness_ScreenMarcacaoSucesso_1 As image:
+            Height: =27
+            Image: =ServiceFitness
+            X: =1256
+            Y: =53
+            ZIndex: =13
+
+    Ico_Home_FeedbackScreen As icon.Home:
+        Color: =RGBA(245, 208, 0, 1)
+        HoverBorderColor: =
+        HoverColor: =RGBA(252, 65, 123, 1)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Icon: =Icon.Home
+        OnSelect: =Navigate(ScreenMembro);
+        X: =40
+        Y: =40
+        ZIndex: =17
+
+    Img_Treino_MarcacaoAulaSucesso_1 As image:
+        Image: ='Imagem treino'
+        X: =616
+        Y: =620
+        ZIndex: =18
+
+    Ico_Combo_Success_FeedbackScreen As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =18
+
+        Ico_CheckCircle_1 As circle.Circle:
+            Fill: =RGBA(131, 60, 108, 1)
+            Height: =150
+            Width: =150
+            X: =576
+            Y: =239
+            ZIndex: =15
+
+        Ico_Check_1 As icon.Check:
+            Color: =RGBA(245, 208, 0, 1)
+            Height: =Ico_CheckCircle_1.Height
+            Icon: =Icon.Check
+            PaddingBottom: =Self.PaddingTop
+            PaddingLeft: =Self.PaddingTop
+            PaddingRight: =Self.PaddingTop
+            PaddingTop: =24
+            Width: =Ico_CheckCircle_1.Width
+            X: =576
+            Y: =239
+            ZIndex: =16
+
+    Timer_Feedback As timer:
+        AutoStart: =true
+        Duration: =5000
+        FontWeight: =FontWeight.Lighter
+        OnTimerEnd: |
+            =Set(
+                var_id_entrada,
+                Blank()
+            );
+            Set(
+                var_id_membro,
+                Blank()
+            );
+            Navigate(
+                ScreenLogin,
+                ScreenTransition.Cover
+            );
+        Visible: =false
+        X: =80
+        Y: =80
+        ZIndex: =19
+
+    FullTriangleSet_FeedbackScreen As group:
+        Height: =5
+        Width: =5
+        X: =80
+        Y: =80
+        ZIndex: =19
+
+        Img_TriangSet2_1 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            X: =1062
+            Y: =481
+            ZIndex: =1
+
+        Img_TriangPurple_1 As image:
+            Height: =57
+            Image: =TrianguloRoxoLeft
+            Transparency: =0.5
+            Width: =58
+            X: =1071
+            Y: =596
+            ZIndex: =2
+
+        Img_larger_1 As image:
+            Height: =216
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =170
+            Y: =550
+            ZIndex: =3
+
+        Img_small_1 As image:
+            Height: =50
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =50
+            X: =60
+            Y: =587
+            ZIndex: =4
+
+        Img_TriangSet1_1 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            Y: =1
+            ZIndex: =5
+
+        Img_combo_YellPinkTriang2_1 As image:
+            Image: =TriangulosAmareloRosa
+            Transparency: =0.3
+            X: =238
+            Y: =320
+            ZIndex: =6
+
+        Img_tri_AzulClaro_1 As image:
+            Image: =TrianguloAzul
+            Transparency: =0.4
+            X: =104
+            Y: =299
+            ZIndex: =7
+
+        Img_tri_AzulNavy_1 As image:
+            Image: =TrianguloNavy180
+            Transparency: =0.4
+            X: =132
+            Y: =320
+            ZIndex: =8
+
+        Img_combo_YellPinkTriang1_1 As image:
+            Height: =150
+            Image: =TriangulosAmareloRosa
+            Transparency: =0.4
+            Width: =150
+            X: =912
+            Y: =81
+            ZIndex: =9
+
+        Img_tri_AzulClaro_11 As image:
+            Image: =TrianguloAzul
+            Transparency: =0.4
+            X: =922
+            Y: =353
+            ZIndex: =10
+
+        Img_tri_AzulNavy_11 As image:
+            Image: =TrianguloNavy180
+            Transparency: =0.4
+            X: =950
+            Y: =374
+            ZIndex: =11
+

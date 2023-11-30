@@ -1,0 +1,125 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr0ea__cronogramadeaulases",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr0ea__cronogramadeaulas",
+    "MaxGetRowsCount": 2000,
+    "Name": "_CronogramaDeAulas",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cr0ea__cronogramadeaulas_AsyncOperations": "Tarefas de Sistema",
+      "cr0ea__cronogramadeaulas_BulkDeleteFailures": "Falhas de Eliminação em Massa",
+      "cr0ea__cronogramadeaulas_DuplicateBaseRecord": "Registos Duplicados (cr0ea__cronogramadeaulas_DuplicateBaseRecord)",
+      "cr0ea__cronogramadeaulas_DuplicateMatchingRecord": "Registos Duplicados (cr0ea__cronogramadeaulas_DuplicateMatchingRecord)",
+      "cr0ea__cronogramadeaulas_MailboxTrackingFolders": "Pastas de Monitorização Automática da Caixa de Correio",
+      "cr0ea__cronogramadeaulas_PrincipalObjectAttributeAccesses": "Partilha de Campos",
+      "cr0ea__cronogramadeaulas_ProcessSession": "Sessões de Processo",
+      "cr0ea__cronogramadeaulas_SyncErrors": "Erros de Sincronização",
+      "cr0ea__cronogramadeaulasid": "_CronogramaDeAulas",
+      "cr0ea__LogAcesso_id_Aula_cr0ea__Cronogram": "_LogAcessos",
+      "cr0ea_fimaula": "Final da Aula",
+      "cr0ea_id_aula": "id_Aula",
+      "cr0ea_id_funcionario": "Funcionário",
+      "cr0ea_inicioaula": "Início da Aula",
+      "cr0ea_inicioaulanumero": "Inicio Aula Numero",
+      "cr0ea_tipodeaula": "Tipo De Aula",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Número da Versão"
+    },
+    "PreferredName": "_CronogramaDeAulas",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "_CronogramaDeAulas (Views)",
+    "Name": "_cr0ea__cronogramadeaulas_views",
+    "RelatedEntityName": "_CronogramaDeAulas",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "20fc8b25-6b80-401c-a699-c2905cbaf0b6": "_CronogramaDeAulas Associated View",
+      "293e5fcc-68ef-46df-9806-73575980f8ca": "_CronogramaDeAulas Lookup View",
+      "661c31e8-f93e-4b35-992a-53791d6ebf06": "Inactive _CronogramaDeAulas",
+      "bf5ba574-1c54-4e9b-8977-ebabd9f81f09": "_CronogramaDeAulas Advanced Find View",
+      "ce57a3a1-7d23-480b-9d37-eba6add2bd5c": "Active _CronogramaDeAulas"
+    }
+  },
+  {
+    "DisplayName": "Tipo De Aula (_CronogramaDeAulas)",
+    "Name": "cr0ea__cronogramadeaulas_cr0ea_tipodeaula",
+    "OptionSetInfoNameMapping": {
+      "1": "Cycling",
+      "2": "Personal Trainer",
+      "3": "Pilates",
+      "4": "Yoga"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr0ea_tipodeaula",
+        "OptionSetReferenceEntityName": "_CronogramaDeAulas"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "cr0ea_tipodeaula",
+    "RelatedEntityName": "_CronogramaDeAulas",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (_CronogramaDeAulas)",
+    "Name": "cr0ea__cronogramadeaulas_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "_CronogramaDeAulas"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "_CronogramaDeAulas",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (_CronogramaDeAulas)",
+    "Name": "cr0ea__cronogramadeaulas_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "_CronogramaDeAulas"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "_CronogramaDeAulas",
+    "Type": "OptionSetInfo"
+  }
+]

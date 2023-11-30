@@ -1,0 +1,62 @@
+{
+  "56d3e15f-a89d-4b29-851f-9129e9ed5fac": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Outlook",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/office365/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "a1527ba1-e9b1-498f-9f8e-7470a471db9e"
+    ],
+    "id": "56d3e15f-a89d-4b29-851f-9129e9ed5fac"
+  },
+  "a1527ba1-e9b1-498f-9f8e-7470a471db9e": {
+    "appActions": [
+      "Run"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Fluxos lógicos",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "56d3e15f-a89d-4b29-851f-9129e9ed5fac": {
+          "value": "shared_office365"
+        },
+        "workflowEntityId": {
+          "value": "04e94c84-8072-ee11-8179-000d3ad7b9e4"
+        },
+        "workflowName": {
+          "value": "5a5e134a-83ee-45d0-9d97-4b322e5b5256"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_office365": {
+          "value": "56d3e15f-a89d-4b29-851f-9129e9ed5fac"
+        },
+        "workflowEntityId": {
+          "value": "04e94c84-8072-ee11-8179-000d3ad7b9e4"
+        },
+        "workflowName": {
+          "value": "5a5e134a-83ee-45d0-9d97-4b322e5b5256"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "notificaralteracaopassword"
+    ],
+    "dependencies": {
+      "shared_office365": "56d3e15f-a89d-4b29-851f-9129e9ed5fac"
+    },
+    "dependents": [],
+    "id": "a1527ba1-e9b1-498f-9f8e-7470a471db9e"
+  }
+}

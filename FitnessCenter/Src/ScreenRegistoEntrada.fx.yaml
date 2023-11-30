@@ -1,0 +1,225 @@
+ScreenRegistoEntrada As screen:
+    BackgroundImage: ='Untitled-2'
+    Fill: =RGBA(20, 52, 84, 1)
+    OnVisible: =ClearCollect(frase,ShowColumns(_FrasesMotivacionais,"cr0ea_frases"))
+
+    Img_Treino_RegistoEntrada As image:
+        Image: ='Imagem treino'
+        X: =812
+        Y: =631
+        ZIndex: =15
+
+    lbl_bomTreinoRegistoEntrada As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =65
+        Size: =25
+        Text: ="Bom treino"
+        Width: =212
+        X: =562
+        Y: =631
+        ZIndex: =16
+
+    lbl_fraseMotivaçãoRegistoEntrada As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =212
+        Size: =25
+        Text: |-
+            =// Declara a variável ListaFrases
+            First(Shuffle(frase)).cr0ea_frases
+        Width: =813
+        X: =308
+        Y: =408
+        ZIndex: =17
+
+    lbl_sucessoRegistoEntrada As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =155
+        Size: =25
+        Text: |-
+            ="Registo da entrada com Sucesso!
+            "
+        Width: =428
+        X: =439
+        Y: =77
+        ZIndex: =18
+
+    Timer_RegistoEntrada As timer:
+        AutoStart: =true
+        Duration: =5000
+        FontWeight: =FontWeight.Lighter
+        OnTimerEnd: |
+            =Set(
+                var_id_entrada,
+                Blank()
+            );
+            Set(
+                var_id_membro,
+                Blank()
+            );
+            Navigate(
+                ScreenLogin,
+                ScreenTransition.Cover
+            );
+        Visible: =false
+        X: =40
+        Y: =40
+        ZIndex: =19
+
+    lbl_bemVindo_RegistoEntrada As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =66
+        Size: =25
+        Text: =$"Bem Vindo {var_id_membro.nome}"
+        Width: =525
+        X: =16
+        Y: =10
+        ZIndex: =20
+
+    Logo_ScreenRegistoEntrada As group:
+        Height: =5
+        Width: =5
+        X: =100
+        Y: =100
+        ZIndex: =22
+
+        img_logo4 As image:
+            Height: =44
+            Image: =Imagem2
+            X: =1263
+            Y: =9
+            ZIndex: =10
+
+        img_serviceFitness4 As image:
+            Height: =31
+            Image: =ServiceFitness
+            X: =1263
+            Y: =53
+            ZIndex: =14
+
+    Ico_group_relampagoRegistoEntrada As group:
+        Height: =5
+        Width: =5
+        X: =100
+        Y: =100
+        ZIndex: =22
+
+        Ico_relampago2RegistoEntrada As icon.LightningBolt:
+            Color: =RGBA(245, 208, 0, 1)
+            Icon: =Icon.LightningBolt
+            X: =1126
+            Y: =497
+            ZIndex: =12
+
+        Ico_relampago1_RegistoEntrada As icon.LightningBolt:
+            Color: =RGBA(245, 208, 0, 1)
+            Icon: =Icon.LightningBolt
+            X: =232
+            Y: =488
+            ZIndex: =13
+
+    Ico_Combo_Success_RegistoEntrada As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =22
+
+        Ico_CheckCircle_2 As circle.Circle:
+            Fill: =RGBA(131, 60, 108, 1)
+            Height: =150
+            Width: =150
+            X: =576
+            Y: =239
+            ZIndex: =1
+
+        Ico_Check_2 As icon.Check:
+            Color: =RGBA(245, 208, 0, 1)
+            Height: =Ico_CheckCircle_2.Height
+            Icon: =Icon.Check
+            PaddingBottom: =Self.PaddingTop
+            PaddingLeft: =Self.PaddingTop
+            PaddingRight: =Self.PaddingTop
+            PaddingTop: =24
+            Width: =Ico_CheckCircle_2.Width
+            X: =576
+            Y: =239
+            ZIndex: =2
+
+    FullTriangleSet_ScreenRegEntrada As group:
+        Height: =5
+        Width: =5
+        X: =100
+        Y: =100
+        ZIndex: =26
+
+        Img_TriangSet2_5 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            X: =1062
+            Y: =480
+            ZIndex: =3
+
+        Img_TriangPurple_4 As image:
+            Height: =57
+            Image: =TrianguloRoxoLeft
+            Transparency: =0.5
+            Width: =58
+            X: =1071
+            Y: =595
+            ZIndex: =4
+
+        Img_larger_4 As image:
+            Height: =216
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =170
+            Y: =549
+            ZIndex: =5
+
+        Img_small_4 As image:
+            Height: =50
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =50
+            X: =60
+            Y: =586
+            ZIndex: =6
+
+        Img_TriangSet1_5 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            ZIndex: =7
+
+        Img_tri_AzulClaro_5 As image:
+            Image: =TrianguloAzul
+            Transparency: =0.4
+            X: =104
+            Y: =298
+            ZIndex: =8
+
+        Img_tri_AzulNavy_5 As image:
+            Image: =TrianguloNavy180
+            Transparency: =0.4
+            X: =132
+            Y: =319
+            ZIndex: =9
+
+        Img_combo_YellPinkTriang1_2 As image:
+            Height: =150
+            Image: =TriangulosAmareloRosa
+            Transparency: =0.4
+            Width: =150
+            X: =912
+            Y: =80
+            ZIndex: =11
+

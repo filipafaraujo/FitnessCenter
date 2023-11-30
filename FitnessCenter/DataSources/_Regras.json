@@ -1,0 +1,96 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr0ea__regrases",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr0ea__regras",
+    "MaxGetRowsCount": 2000,
+    "Name": "_Regras",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cr0ea__regras_AsyncOperations": "Tarefas de Sistema",
+      "cr0ea__regras_BulkDeleteFailures": "Falhas de Eliminação em Massa",
+      "cr0ea__regras_MailboxTrackingFolders": "Pastas de Monitorização Automática da Caixa de Correio",
+      "cr0ea__regras_PrincipalObjectAttributeAccesses": "Partilha de Campos",
+      "cr0ea__regras_ProcessSession": "Sessões de Processo",
+      "cr0ea__regras_SyncErrors": "Erros de Sincronização",
+      "cr0ea__regrasid": "_Regras",
+      "cr0ea_texto": "Texto",
+      "cr0ea_titulo": "Titulo",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Número da Versão"
+    },
+    "PreferredName": "_Regras",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "_Regras (Vistas)",
+    "Name": "_cr0ea__regras_views",
+    "RelatedEntityName": "_Regras",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "5bf20e8f-42a9-4471-a88d-867bb46d3bb2": "_Regras Associated View",
+      "6ebb32af-06d7-4bc5-9d91-f46dc9ba452a": "Inactive _Regras",
+      "7c9c3f8e-8f77-4a81-af3b-d269a1269ed9": "Active _Regras",
+      "8d9c5fef-1ac8-445e-a10b-b350177dfa69": "_Regras Advanced Find View",
+      "cfb9669c-9a98-42c8-bb61-2cc8facd1732": "_Regras Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (_Regras)",
+    "Name": "cr0ea__regras_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "_Regras"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "_Regras",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (_Regras)",
+    "Name": "cr0ea__regras_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "_Regras"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "_Regras",
+    "Type": "OptionSetInfo"
+  }
+]

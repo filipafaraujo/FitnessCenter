@@ -1,0 +1,266 @@
+{
+  "QualifiedValues": [
+    {
+      "Kind": "default.cds_cr0ea__funcionario_forms",
+      "Namespace": "_Funcionarios (Forms)",
+      "Values": {
+        "Information": "988b2a5b-45a8-4f22-9a12-f50c3fc92941"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__logacesso_forms",
+      "Namespace": "_LogAcessos (Forms)",
+      "Values": {
+        "Information": "a0f65e49-2520-4190-b4ad-ce943ac9698b"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea_membros_forms",
+      "Namespace": "_Membros (Forms)",
+      "Values": {
+        "Information": "ea7e16ec-f2d2-460d-a38d-f7d82076f071"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__login_forms",
+      "Namespace": "_Logins (Forms)",
+      "Values": {
+        "Information": "f4c01428-98f1-40a9-9ab6-f490e85d26d2"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__frasesmotivacionais_forms",
+      "Namespace": "_FrasesMotivacionais (Forms)",
+      "Values": {
+        "Information": "c2648879-1158-450e-81c2-e879ca96585d"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__cronogramadeaulas_forms",
+      "Namespace": "_CronogramaDeAulas (Forms)",
+      "Values": {
+        "Information": "15f3c109-b888-43e3-bdc1-419c22c6034a"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__regras_forms",
+      "Namespace": "_Regras (Forms)",
+      "Values": {
+        "Information": "941614da-f553-49cc-99f7-fb71100eadee"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__funcionario_forms",
+      "Namespace": "_Funcionarios (Formulários)",
+      "Values": {
+        "Information": "988b2a5b-45a8-4f22-9a12-f50c3fc92941"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__logacesso_forms",
+      "Namespace": "_LogAcessos (Formulários)",
+      "Values": {
+        "Information": "a0f65e49-2520-4190-b4ad-ce943ac9698b"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea_membros_forms",
+      "Namespace": "_Membros (Formulários)",
+      "Values": {
+        "Information": "ea7e16ec-f2d2-460d-a38d-f7d82076f071",
+        "Inscrição": "2dd4ae54-5b7e-ee11-8179-0022489bae2a"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__login_forms",
+      "Namespace": "_Logins (Formulários)",
+      "Values": {
+        "Information": "f4c01428-98f1-40a9-9ab6-f490e85d26d2",
+        "Login": "c624d111-5d7e-ee11-8179-0022489bae2a"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__frasesmotivacionais_forms",
+      "Namespace": "_FrasesMotivacionais (Formulários)",
+      "Values": {
+        "Information": "c2648879-1158-450e-81c2-e879ca96585d"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__cronogramadeaulas_forms",
+      "Namespace": "_CronogramaDeAulas (Formulários)",
+      "Values": {
+        "Information": "15f3c109-b888-43e3-bdc1-419c22c6034a"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__regras_forms",
+      "Namespace": "_Regras (Formulários)",
+      "Values": {
+        "Information": "941614da-f553-49cc-99f7-fb71100eadee"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__regras_informacoes_forms",
+      "Namespace": "_Regras_Informações (Formulários)",
+      "Values": {
+        "Information": "8a334b3f-aa03-45a1-bd9c-fc9a9b07a056"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__regras_informacoes_forms",
+      "Namespace": "_Regras_Informações (Forms)",
+      "Values": {
+        "Information": "8a334b3f-aa03-45a1-bd9c-fc9a9b07a056"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea_agendamentoaulamembro_forms",
+      "Namespace": "_AgendamentoAulaMembros (Forms)",
+      "Values": {
+        "Information": "b799b4a2-6e79-4fad-a15a-ba8ab3392366"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__feedbackmembro_forms",
+      "Namespace": "_FeedbackMembros (Forms)",
+      "Values": {
+        "Information": "814b8d86-33f5-4bc9-983b-c337a270ee3f"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea_reservasaula_forms",
+      "Namespace": "_ReservasAulas (Forms)",
+      "Values": {
+        "Information": "1e457fb8-d32c-4e3c-bf1f-82b707dde8c4"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__tipoaula_forms",
+      "Namespace": "_TipoAulas (Forms)",
+      "Values": {
+        "Information": "63e1a6ea-402a-40d1-9c59-d37e48045a79"
+      }
+    },
+    {
+      "Kind": "default.cds_systemuser_forms",
+      "Namespace": "Users (Forms)",
+      "Values": {
+        "Application User": "d26924ef-4d80-46f7-ab1d-e6ae80a54ce8",
+        "Information": "094fb08a-77bb-49e0-b7ea-8dbddfd01294",
+        "User": "c2cd9e55-d4b4-4b55-9951-16ead79643e5",
+        "User form – Business": "c2413504-7eb2-4c59-a087-95d819866114",
+        "User Hierarchy Tile Form": "c68d6c09-d7a7-4959-8d0f-44b8cff9b452"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea_agendamentoaulamembro_forms",
+      "Namespace": "_AgendamentoAulaMembros (Formulários)",
+      "Values": {
+        "Information": "b799b4a2-6e79-4fad-a15a-ba8ab3392366"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__feedbackmembro_forms",
+      "Namespace": "_FeedbackMembros (Formulários)",
+      "Values": {
+        "Information": "814b8d86-33f5-4bc9-983b-c337a270ee3f"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea_reservasaula_forms",
+      "Namespace": "_ReservasAulas (Formulários)",
+      "Values": {
+        "Information": "1e457fb8-d32c-4e3c-bf1f-82b707dde8c4"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__tipoaula_forms",
+      "Namespace": "_TipoAulas (Formulários)",
+      "Values": {
+        "Information": "63e1a6ea-402a-40d1-9c59-d37e48045a79"
+      }
+    },
+    {
+      "Kind": "default.cds_systemuser_forms",
+      "Namespace": "Users (Formulários)",
+      "Values": {
+        "Application User": "d26924ef-4d80-46f7-ab1d-e6ae80a54ce8",
+        "Information": "094fb08a-77bb-49e0-b7ea-8dbddfd01294",
+        "User": "c2cd9e55-d4b4-4b55-9951-16ead79643e5",
+        "User form – Business": "c2413504-7eb2-4c59-a087-95d819866114",
+        "User Hierarchy Tile Form": "c68d6c09-d7a7-4959-8d0f-44b8cff9b452"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__survey_forms",
+      "Namespace": "_Survey (Formulários)",
+      "Values": {
+        "Information": "55622206-b4fc-4550-8ffe-e1ae8aa6b7e4"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__survey_forms",
+      "Namespace": "_Survey (Forms)",
+      "Values": {
+        "Information": "55622206-b4fc-4550-8ffe-e1ae8aa6b7e4"
+      }
+    },
+    {
+      "Kind": "default.cds_new__login_forms",
+      "Namespace": "_Logins (Forms)1",
+      "Values": {
+        "Information": "cbe918d0-2aff-42eb-beb8-f0c7a178d7f2"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__login_forms",
+      "Namespace": "_Logins (Forms)11",
+      "Values": {
+        "Information": "9ffe3231-4107-40fc-bfc8-c4eb76dd6cb8"
+      }
+    },
+    {
+      "Kind": "default.cds_new__login_forms",
+      "Namespace": "_Logins_1 (Forms)",
+      "Values": {
+        "Information": "cbe918d0-2aff-42eb-beb8-f0c7a178d7f2"
+      }
+    },
+    {
+      "Kind": "default.cds_new__login_forms",
+      "Namespace": "_Logins (Forms)111",
+      "Values": {
+        "Information": "cbe918d0-2aff-42eb-beb8-f0c7a178d7f2"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__login_forms",
+      "Namespace": "_Logins (Forms)2",
+      "Values": {
+        "Information": "f4c01428-98f1-40a9-9ab6-f490e85d26d2"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__login_forms",
+      "Namespace": "_Logins (Forms)3",
+      "Values": {
+        "Information": "f4c01428-98f1-40a9-9ab6-f490e85d26d2"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__survey_forms",
+      "Namespace": "_FeedbackMembros_1 (Formulários)",
+      "Values": {
+        "Information": "55622206-b4fc-4550-8ffe-e1ae8aa6b7e4"
+      }
+    },
+    {
+      "Kind": "default.cds_cr0ea__survey_forms",
+      "Namespace": "_FeedbackMembros_1 (Forms)",
+      "Values": {
+        "Information": "55622206-b4fc-4550-8ffe-e1ae8aa6b7e4"
+      }
+    }
+  ]
+}

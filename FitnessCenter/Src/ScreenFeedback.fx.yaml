@@ -1,0 +1,299 @@
+ScreenFeedback As screen:
+    BackgroundImage: ='Untitled-2'
+    Fill: =RGBA(20, 52, 84, 1)
+
+    lbl_rating_hidden As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =52
+        Text: =var
+        Visible: =false
+        Width: =107
+        X: =132
+        Y: =183
+        ZIndex: =10
+
+    btn_submeter As button:
+        Color: =RGBA(20, 52, 84, 1)
+        Fill: =RGBA(245, 208, 0, 1)
+        Height: =100
+        OnSelect: |-
+            =Patch(
+                _LogAcessos,
+                Defaults(_LogAcessos),
+                {
+                    Rating: var,
+                    comentarioFeedback: text_feedback.Text
+                }
+            );
+            Notify(
+                "Obrigada pela sua opinião",
+                NotificationType.Success
+            );
+            Navigate(
+                ScreenConcluidoFeedback,
+                ScreenTransition.Fade
+            )
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Size: =20
+        Text: ="Submeter"
+        Width: =250
+        X: =534
+        Y: =636
+        ZIndex: =11
+
+    text_feedback As text:
+        Clear: =true
+        Default: =
+        Height: =154
+        Size: =18
+        Width: =1163
+        X: =96
+        Y: =469
+        ZIndex: =12
+
+    lbl_sugestões As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =85
+        Size: =23
+        Text: ="Por favor indique como se sentiu, sugestões, como podemos melhorar, etc..."
+        Width: =1124
+        X: =124
+        Y: =384
+        ZIndex: =13
+
+    lbl_avaliação As label:
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =74
+        Size: =23
+        Text: |-
+            ="Por favor faça uma avaliação da sua experiência:"
+        Width: =752
+        X: =327
+        Y: =9
+        ZIndex: =19
+
+    bnt_avaliaçao As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =25
+
+        btn_avaliação4 As button:
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =180
+            HoverFill: =Self.Fill
+            OnSelect: =Set(var,4)
+            PressedFill: =Self.Fill
+            RadiusBottomLeft: =85
+            RadiusBottomRight: =85
+            RadiusTopLeft: =85
+            RadiusTopRight: =85
+            Text: =""
+            Width: =170
+            X: =829
+            Y: =112
+            ZIndex: =20
+
+        btn_avaliação5 As button:
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =180
+            HoverFill: =Self.Fill
+            OnSelect: =Set(var,5)
+            PressedFill: =Self.Fill 
+            RadiusBottomLeft: =85
+            RadiusBottomRight: =85
+            RadiusTopLeft: =85
+            RadiusTopRight: =85
+            Text: =""
+            Width: =170
+            X: =1079
+            Y: =111
+            ZIndex: =21
+
+        btn_avaliação3 As button:
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =180
+            HoverFill: =Self.Fill
+            OnSelect: =Set(var,3)
+            PressedFill: =Self.Fill
+            RadiusBottomLeft: =85
+            RadiusBottomRight: =85
+            RadiusTopLeft: =85
+            RadiusTopRight: =85
+            Text: =""
+            Width: =170
+            X: =579
+            Y: =107
+            ZIndex: =22
+
+        btn_avaliação2 As button:
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =180
+            HoverColor: =Self.Fill
+            HoverFill: =Self.Fill
+            OnSelect: =Set(var,2)
+            PressedFill: =Self.Fill
+            RadiusBottomLeft: =85
+            RadiusBottomRight: =85
+            RadiusTopLeft: =85
+            RadiusTopRight: =85
+            Text: =""
+            Width: =170
+            X: =347
+            Y: =121
+            ZIndex: =23
+
+        btn_avaliação1 As button:
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =180
+            HoverColor: =Self.Fill
+            HoverFill: =Self.Fill
+            OnSelect: =Set(var,1)
+            PressedFill: =Self.Fill
+            RadiusBottomLeft: =85
+            RadiusBottomRight: =85
+            RadiusTopLeft: =85
+            RadiusTopRight: =85
+            Text: =""
+            Width: =170
+            X: =115
+            Y: =121
+            ZIndex: =24
+
+    img_avaliaçao As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =25
+
+        img_avaliação1 As image:
+            Height: =224
+            Image: =icon1
+            Width: =228
+            X: =86
+            Y: =92
+            ZIndex: =14
+
+        img_avaliação2 As image:
+            Height: =210
+            Image: =icon2
+            Width: =180
+            X: =342
+            Y: =99
+            ZIndex: =15
+
+        img_avaliação3 As image:
+            Height: =194
+            Image: =icon3
+            Width: =224
+            X: =552
+            Y: =105
+            ZIndex: =16
+
+        img_avaliação4 As image:
+            Height: =187
+            Image: =icon4
+            Width: =186
+            X: =826
+            Y: =108
+            ZIndex: =17
+
+        img_avaliação5 As image:
+            Height: =180
+            Image: =icon5
+            Width: =198
+            X: =1065
+            Y: =108
+            ZIndex: =18
+
+    Logo_group_screenFeedback As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =28
+
+        img_logo5 As image:
+            Height: =44
+            Image: =Imagem2
+            X: =1263
+            Y: =9
+            ZIndex: =1
+
+        img_serviceFitness5 As image:
+            Height: =32
+            Image: =ServiceFitness
+            Width: =97
+            X: =1266
+            Y: =53
+            ZIndex: =2
+
+    FullTriangleSet_ScreenFeedback As group:
+        Height: =5
+        Width: =5
+        X: =100
+        Y: =100
+        ZIndex: =32
+
+        Img_TriangSet2_6 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            X: =1062
+            Y: =480
+            ZIndex: =3
+
+        Img_TriangPurple_5 As image:
+            Height: =57
+            Image: =TrianguloRoxoLeft
+            Transparency: =0.5
+            Width: =58
+            X: =1071
+            Y: =595
+            ZIndex: =4
+
+        Img_larger_5 As image:
+            Height: =216
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =170
+            Y: =549
+            ZIndex: =5
+
+        Img_small_5 As image:
+            Height: =50
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =50
+            X: =60
+            Y: =586
+            ZIndex: =6
+
+        Img_TriangSet1_6 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            ZIndex: =7
+
+        Img_tri_AzulClaro_6 As image:
+            Image: =TrianguloAzul
+            Transparency: =0.4
+            X: =104
+            Y: =298
+            ZIndex: =8
+
+        Img_tri_AzulNavy_6 As image:
+            Image: =TrianguloNavy180
+            Transparency: =0.4
+            X: =132
+            Y: =319
+            ZIndex: =9
+

@@ -1,0 +1,293 @@
+ScreenMonthCalendar As screen:
+    BackgroundImage: ='Untitled-2'
+    Fill: |-
+        =ColorValue("#143454")
+
+    "galListOfDays As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        DelayItemLoading: =true
+        Fill: |-
+            =If(
+                Month(DateValue(Lbl_Date.Text)) = Month(varMonth), ColorValue("#929292"), ColorFade(ColorValue("#929292"),25%)
+            )
+        Height: =600
+        Items: =Sequence(35)
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =113
+        Width: =1365
+        WrapCount: =7
+        Y: =150
+        ZIndex: =10
+
+        Lbl_Date As label:
+            Align: =Align.Center
+            Color: |-
+                =If(
+                    DateValue(Lbl_Date.Text) = Today(),
+                    ColorValue("#f5d000"),
+                    Month(DateValue(Self.Text)) = Month(varMonth),
+                    ColorValue("#f5d000"),
+                    ColorFade(
+                        ColorValue("#929292"),
+                        15%
+                    )
+                )
+            Fill: |-
+                =If(
+                    DateValue(Lbl_Date.Text) = Today(),
+                    ColorValue("#1D9DFF"),
+                    Month(DateValue(Self.Text)) = Month(varMonth),
+                    ColorValue("#143454"),
+                    ColorFade(
+                        ColorValue("#143454"),
+                        25%
+                    )
+                )
+            FontWeight: |-
+                =If(
+                    DateValue(Self.Text) = Today(),
+                    FontWeight.Bold
+                )
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: |-
+                =DateAdd(
+                    varFirstDayView,
+                    ThisItem.Value,
+                    TimeUnit.Days
+                )
+            Width: =galListOfDays.TemplateWidth
+            ZIndex: =1
+
+    "galMonthView As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        DelayItemLoading: =true
+        Fill: =RGBA(20, 52, 84, 1)
+        Height: =galMonthView.TemplateHeight
+        Items: |-
+            =[
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+            ]
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =40
+        Width: =1365
+        WrapCount: =7
+        Y: =110
+        ZIndex: =11
+
+        Lbl_Weekday As label:
+            Align: =Align.Center
+            Color: =RGBA(245, 208, 0, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =galMonthView.TemplateHeight - 4
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =16
+            Text: =ThisItem.Value
+            Width: =galMonthView.TemplateWidth
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Rct_DayDivider As rectangle:
+            Height: =galMonthView.TemplateHeight
+            OnSelect: =Select(Parent)
+            Width: =1
+            X: =galMonthView.TemplateWidth-1
+            Y: =Parent.TemplateHeight - Self.Height
+            ZIndex: =3
+
+        Rct_Upper As rectangle:
+            Fill: =RGBA(146, 146, 146, 1)
+            Height: =2
+            OnSelect: =Select(Parent)
+            Width: =galMonthView.TemplateWidth
+            ZIndex: =4
+
+        Rct_Bottom As rectangle:
+            Fill: =RGBA(146, 146, 146, 1)
+            Height: =2
+            OnSelect: =Select(Parent)
+            Width: =galMonthView.TemplateWidth
+            Y: =38
+            ZIndex: =5
+
+    Btn_CurrentMonth As button:
+        BorderThickness: =5
+        Color: =RGBA(20, 52, 84, 1)
+        Fill: =RGBA(245, 208, 0, 1)
+        Height: =50
+        HoverBorderColor: =Self.BorderColor
+        HoverColor: =Self.Fill
+        HoverFill: =RGBA(20, 52, 84, 0.8)
+        OnSelect: |
+            =Set(
+                varMonth,
+                DateValue("1" & "/" & Month(Today()) & "/" & Year(Today()))
+            );
+            Set(
+                varFirstDayView,
+                DateAdd(
+                    varMonth,
+                    -Weekday(
+                        varMonth,
+                        StartOfWeek.Monday
+                    ),
+                    TimeUnit.Days
+                )
+            );
+        PaddingBottom: =0
+        PaddingLeft: =0
+        PaddingRight: =0
+        PaddingTop: =0
+        PressedColor: |-
+            =ColorValue("#143454")
+        PressedFill: |-
+            =ColorValue("#fc417B")
+        Size: =14
+        Text: ="Current Month"
+        Width: =150
+        X: =150
+        Y: =30
+        ZIndex: =12
+
+    Btn_Previous As button:
+        BorderThickness: =5
+        Color: =RGBA(20, 52, 84, 1)
+        Fill: =RGBA(245, 208, 0, 1)
+        Height: =50
+        HoverBorderColor: =Self.BorderColor
+        HoverColor: =Self.Fill
+        HoverFill: =RGBA(20, 52, 84, 0.8)
+        OnSelect: |
+            =Set(
+                varMonth,
+                DateAdd(
+                    varMonth,
+                    -1,
+                    TimeUnit.Months
+                )
+            );
+            Set(
+                varFirstDayView,
+                DateAdd(
+                    varMonth,
+                    -Weekday(
+                        varMonth,
+                        StartOfWeek.Monday
+                    ),
+                    TimeUnit.Days
+                )
+            );
+        PaddingBottom: =0
+        PaddingLeft: =0
+        PaddingRight: =0
+        PaddingTop: =0
+        PressedColor: |-
+            =ColorValue("#143454")
+        PressedFill: |-
+            =ColorValue("#fc417B")
+        Size: =14
+        Text: ="Previous"
+        Width: =100
+        X: =30
+        Y: =30
+        ZIndex: =13
+
+    Btn_Next As button:
+        BorderThickness: =5
+        Color: =RGBA(20, 52, 84, 1)
+        Fill: =RGBA(245, 208, 0, 1)
+        Height: =50
+        HoverBorderColor: =Self.BorderColor
+        HoverColor: =Self.Fill
+        HoverFill: =RGBA(20, 52, 84, 0.8)
+        OnSelect: |
+            =Set(
+                varMonth,
+                DateAdd(
+                    varMonth,
+                    1,
+                    TimeUnit.Months
+                )
+            );
+            Set(
+                varFirstDayView,
+                DateAdd(
+                    varMonth,
+                    -Weekday(
+                        varMonth,
+                        StartOfWeek.Monday
+                    ),
+                    TimeUnit.Days
+                )
+            );
+        PaddingBottom: =0
+        PaddingLeft: =0
+        PaddingRight: =0
+        PaddingTop: =0
+        PressedColor: |-
+            =ColorValue("#143454")
+        PressedFill: |-
+            =ColorValue("#fc417B")
+        Size: =14
+        Text: ="Next"
+        Width: =100
+        X: =320
+        Y: =30
+        ZIndex: =14
+
+    Lbl_MonthYear As label:
+        Align: =Align.Center
+        Color: =RGBA(245, 208, 0, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =50
+        PaddingBottom: =0
+        PaddingLeft: =0
+        PaddingRight: =0
+        PaddingTop: =0
+        Size: =32
+        Text: |-
+            =Text(
+                varMonth,
+                "mmmm yyyy"
+            )
+        Width: =350
+        X: =507
+        Y: =30
+        ZIndex: =15
+
+    Logo_MonthCal As group:
+        Height: =5
+        Width: =5
+        X: =10
+        Y: =20
+        ZIndex: =18
+
+        img_logo_MonthCal As image:
+            Height: =44
+            Image: =Imagem2
+            X: =1250
+            Y: =15
+            ZIndex: =19
+
+        Img_serviceFitness_MonthCal As image:
+            Height: =27
+            Image: =ServiceFitness
+            X: =1252
+            Y: =59
+            ZIndex: =20
+

@@ -1,0 +1,351 @@
+ScreenAulaSeleccionada As screen:
+    BackgroundImage: ='Untitled-2'
+    Fill: =RGBA(20, 52, 84, 1)
+
+    Logo_AulaSeleccionada As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =8
+
+        img_logo_AulaSeleccionada As image:
+            Height: =44
+            Image: =Imagem2
+            X: =1254
+            Y: =9
+            ZIndex: =10
+
+        Img_serviceFitness_AulaSeleccionada As image:
+            Height: =27
+            Image: =ServiceFitness
+            X: =1256
+            Y: =53
+            ZIndex: =11
+
+    ViewAulaSelecionada As formViewer:
+        DataSource: =_CronogramaDeAulas
+        Height: =400
+        Item: =GalleryCheckinAula.Selected
+        NumberOfColumns: =1
+        Width: =750
+        X: =308
+        Y: =126
+        ZIndex: =12
+
+        tipoDeAula_DataCard_AulaSelecionada As typedDataCard.comboBoxOptionSetSingleViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_tipodeaula"
+            Default: =ThisItem.'Tipo De Aula'
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@_CronogramaDeAulas],DataSourceInfo.DisplayName,"cr0ea_tipodeaula")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height/3
+            Required: =false
+            Update: =DataCardValue_TipoDeAulaSelecionada.Selected
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey_TipoDeAulaSelecionada As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =34
+                PaddingLeft: =20
+                Size: =20
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue_TipoDeAulaSelecionada As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =[Parent.Default]
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                IsSearchable: =false
+                Items: =Choices('Tipo De Aula (_CronogramaDeAulas)')
+                PaddingBottom: =0
+                PaddingLeft: =20
+                PaddingRight: =20
+                PaddingTop: =0
+                SearchFields: =["Value"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Size: =20
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =54
+                ZIndex: =2
+
+            ErrorMessage_TipoDeAulaSelecionada As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue_TipoDeAulaSelecionada.Y + DataCardValue_TipoDeAulaSelecionada.Height
+                ZIndex: =3
+
+            StarVisible_TipoDeAulaSelecionada As label:
+                Align: =Align.Center
+                Height: =DataCardKey_TipoDeAulaSelecionada.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey_TipoDeAulaSelecionada.Y
+                ZIndex: =4
+
+        DataCard_InicioDeAula_AulaSelecionada As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_inicioaula"
+            Default: =ThisItem.'Início da Aula'
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@_CronogramaDeAulas],DataSourceInfo.DisplayName,"cr0ea_inicioaula")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height/3
+            Required: =false
+            Width: =Parent.Width
+            X: =0
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey_InicioDeAulaSelecionada As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =34
+                PaddingLeft: =20
+                Size: =20
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue_InicioDeAulaSelecionada As label:
+                DisplayMode: =Parent.DisplayMode
+                Fill: =RGBA(255, 255, 255, 1)
+                PaddingBottom: =0
+                PaddingLeft: =20
+                PaddingRight: =20
+                PaddingTop: =0
+                Size: =20
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey_InicioDeAulaSelecionada.Y + DataCardKey_InicioDeAulaSelecionada.Height + 5
+                ZIndex: =2
+
+        DataCard_FimDeAula_AulaSelecionada As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_fimaula"
+            Default: =ThisItem.'Final da Aula'
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@_CronogramaDeAulas],DataSourceInfo.DisplayName,"cr0ea_fimaula")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height/3
+            Required: =false
+            Width: =Parent.Width
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey_FimDeAulaSelecionada As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =34
+                PaddingLeft: =20
+                Size: =20
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue_FimDeAulaSelecionada As label:
+                DisplayMode: =Parent.DisplayMode
+                Fill: =RGBA(255, 255, 255, 1)
+                PaddingBottom: =0
+                PaddingLeft: =20
+                PaddingRight: =20
+                PaddingTop: =0
+                Size: =20
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey_FimDeAulaSelecionada.Y + DataCardKey_FimDeAulaSelecionada.Height + 5
+                ZIndex: =2
+
+        id_Aula_DataCard_AulaSelecionada_visibleFalse As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr0ea_id_aula"
+            Default: =ThisItem.id_Aula
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@_CronogramaDeAulas],DataSourceInfo.DisplayName,"cr0ea_id_aula")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Visible: =false
+            Width: =500
+            X: =0
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey_AulaSelecionada As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue_AulaSelecionada As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                Height: =27
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey_AulaSelecionada.Y + DataCardKey_AulaSelecionada.Height + 5
+                ZIndex: =2
+
+    Btn_CancelarAulaSelecionada As button:
+        Color: =RGBA(20, 52, 84, 1)
+        Fill: =RGBA(245, 208, 0, 1)
+        Height: =100
+        OnSelect: =Navigate(ScreenCheckinAula)
+        Size: =20
+        Text: ="Cancelar"
+        Width: =250
+        X: =Parent.Width/2-(Self.Width+(Self.Width/10))
+        Y: =561
+        ZIndex: =13
+
+    Btn_ConfirmarAulaSelecionada As button:
+        Color: =RGBA(20, 52, 84, 1)
+        Fill: =RGBA(245, 208, 0, 1)
+        Height: =100
+        OnSelect: |
+            =Patch(
+                _LogAcessos,
+                Defaults(_LogAcessos),
+                {id_Aula: var_id_entradaAula}
+            );
+            Navigate(ScreenConfirmacaoEntradaAulaSucesso);
+        Size: =20
+        Text: ="Confirmar Entrada na Aula"
+        Width: =250
+        X: =Parent.Width/2+(Self.Width/10)
+        Y: =561
+        ZIndex: =14
+
+    FullTriangleSet_AulaSeleccionada As group:
+        Height: =5
+        Width: =5
+        X: =100
+        Y: =100
+        ZIndex: =14
+
+        Img_TriangSet2_16 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            X: =1062
+            Y: =480
+            ZIndex: =1
+
+        Img_TriangPurple_14 As image:
+            Height: =57
+            Image: =TrianguloRoxoLeft
+            Transparency: =0.5
+            Width: =58
+            X: =1071
+            Y: =595
+            ZIndex: =2
+
+        Img_larger_15 As image:
+            Height: =216
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =170
+            Y: =549
+            ZIndex: =3
+
+        Img_small_15 As image:
+            Height: =50
+            Image: =TrianguloAmarelo
+            Transparency: =0.4
+            Width: =50
+            X: =60
+            Y: =586
+            ZIndex: =4
+
+        Img_TriangSet1_16 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            ZIndex: =5
+
+        Img_combo_YellPinkTriang2_9 As image:
+            Image: =TriangulosAmareloRosa
+            Transparency: =0.3
+            X: =238
+            Y: =319
+            ZIndex: =6
+
+        Img_tri_AzulClaro_16 As image:
+            Image: =TrianguloAzul
+            Transparency: =0.4
+            X: =104
+            Y: =298
+            ZIndex: =7
+
+        Img_tri_AzulNavy_16 As image:
+            Image: =TrianguloNavy180
+            Transparency: =0.4
+            X: =132
+            Y: =319
+            ZIndex: =8
+
+        Img_combo_YellPinkTriang1_7 As image:
+            Height: =150
+            Image: =TriangulosAmareloRosa
+            Transparency: =0.4
+            Width: =150
+            X: =912
+            Y: =80
+            ZIndex: =9
+
+    Ico_Home_AulaSeleccionada As icon.Home:
+        Color: =RGBA(245, 208, 0, 1)
+        HoverBorderColor: =
+        HoverColor: =RGBA(252, 65, 123, 1)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Icon: =Icon.Home
+        OnSelect: =Navigate(ScreenMembro);
+        X: =40
+        Y: =40
+        ZIndex: =15
+

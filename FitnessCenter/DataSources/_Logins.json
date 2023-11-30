@@ -1,0 +1,103 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr0ea__logins",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr0ea__login",
+    "MaxGetRowsCount": 2000,
+    "Name": "_Logins",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cr0ea__login_AsyncOperations": "Tarefas de Sistema",
+      "cr0ea__login_BulkDeleteFailures": "Falhas de Eliminação em Massa",
+      "cr0ea__login_connections1": "Ligações (cr0ea__login_connections1)",
+      "cr0ea__login_connections2": "Ligações (cr0ea__login_connections2)",
+      "cr0ea__login_DuplicateBaseRecord": "Registos Duplicados (cr0ea__login_DuplicateBaseRecord)",
+      "cr0ea__login_DuplicateMatchingRecord": "Registos Duplicados (cr0ea__login_DuplicateMatchingRecord)",
+      "cr0ea__login_MailboxTrackingFolders": "Pastas de Monitorização Automática da Caixa de Correio",
+      "cr0ea__login_PrincipalObjectAttributeAccesses": "Partilha de Campos",
+      "cr0ea__login_ProcessSession": "Sessões de Processo",
+      "cr0ea__login_SyncErrors": "Erros de Sincronização",
+      "cr0ea__loginid": "_Login",
+      "cr0ea_id_funcionario": "id_funcionario",
+      "cr0ea_id_login": "id_login",
+      "cr0ea_id_membro": "id_membro",
+      "cr0ea_password": "password",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "emailaddress": "Email Address",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Número da Versão"
+    },
+    "PreferredName": "_Logins",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "_Logins (Views)",
+    "Name": "_cr0ea__login_views",
+    "RelatedEntityName": "_Logins",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1103421f-15b3-4a6f-93f4-82774bc7db38": "_Login Lookup View",
+      "3714108b-5445-4e66-995f-5602f0c9ab4b": "Inactive _Logins",
+      "870dfe54-8ef8-4206-95c0-c947de7444e0": "_Login Associated View",
+      "a1942294-6d7d-4970-b9e2-35d55fed36aa": "_Login Advanced Find View",
+      "f87b1b96-041d-4f40-8de9-0353c2d5da79": "Active _Logins"
+    }
+  },
+  {
+    "DisplayName": "Status (_Logins)",
+    "Name": "cr0ea__login_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "_Logins"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "_Logins",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (_Logins)",
+    "Name": "cr0ea__login_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "_Logins"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "_Logins",
+    "Type": "OptionSetInfo"
+  }
+]

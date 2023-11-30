@@ -1,0 +1,152 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr0ea_membroses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr0ea_membros",
+    "MaxGetRowsCount": 2000,
+    "Name": "_Membros",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cr0ea_ativo": "Ativo",
+      "cr0ea_countervisitasconsecutivas": "CounterVisitasConsecutivas",
+      "cr0ea_cr0ea__login_id_membro_cr0ea_membros": "_Logins",
+      "cr0ea_datainscricao": "dataInscricao",
+      "cr0ea_datanascimento": "dataNascimento",
+      "cr0ea_email": "email",
+      "cr0ea_endereco": "endereco",
+      "cr0ea_faltasconsecutivas": "faltasConsecutivas",
+      "cr0ea_genero": "genero",
+      "cr0ea_id_membro": "id_membro",
+      "cr0ea_Id_membro_cr0ea_membros": "_LogAcessos",
+      "cr0ea_membros_AsyncOperations": "Tarefas de Sistema",
+      "cr0ea_membros_BulkDeleteFailures": "Falhas de Eliminação em Massa",
+      "cr0ea_membros_DuplicateBaseRecord": "Registos Duplicados (cr0ea_membros_DuplicateBaseRecord)",
+      "cr0ea_membros_DuplicateMatchingRecord": "Registos Duplicados (cr0ea_membros_DuplicateMatchingRecord)",
+      "cr0ea_membros_MailboxTrackingFolders": "Pastas de Monitorização Automática da Caixa de Correio",
+      "cr0ea_membros_PrincipalObjectAttributeAccesses": "Partilha de Campos",
+      "cr0ea_membros_ProcessSession": "Sessões de Processo",
+      "cr0ea_membros_SyncErrors": "Erros de Sincronização",
+      "cr0ea_membrosid": "membros",
+      "cr0ea_nome": "nome",
+      "cr0ea_telemovel": "telemovel",
+      "cr0ea_ultimaentrada": "ultimaEntrada",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Número da Versão"
+    },
+    "PreferredName": "_Membros",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "_Membros (Views)",
+    "Name": "_cr0ea_membros_views",
+    "RelatedEntityName": "_Membros",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0a62bc05-117b-4f80-93a9-5ebdd1ca6e64": "_membros Associated View",
+      "1c77258c-9a6c-41dc-b4a3-d0cffb3fc4e1": "_membros Advanced Find View",
+      "319c2cfc-f15d-4165-924f-2350dbe2f779": "Inactive _membros",
+      "578d295c-f59a-4aac-a9a1-954a14da2a29": "_membros Lookup View",
+      "f4e097f3-fbcc-4b7d-9043-f10c7ce347ed": "Active _membros"
+    }
+  },
+  {
+    "DisplayName": "Ativo (_Membros)",
+    "Name": "cr0ea_membros_cr0ea_ativo",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr0ea_ativo",
+        "OptionSetReferenceEntityName": "_Membros"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "cr0ea_ativo",
+    "RelatedEntityName": "_Membros",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "genero (_Membros)",
+    "Name": "cr0ea_membros_cr0ea_genero",
+    "OptionSetInfoNameMapping": {
+      "1": "Feminino",
+      "2": "Masculino",
+      "210530001": "Não Quero Revelar",
+      "3": "Não Binário"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr0ea_genero",
+        "OptionSetReferenceEntityName": "_Membros"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "cr0ea_genero",
+    "RelatedEntityName": "_Membros",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (_Membros)",
+    "Name": "cr0ea_membros_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "_Membros"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "_Membros",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (_Membros)",
+    "Name": "cr0ea_membros_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "_Membros"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "_Membros",
+    "Type": "OptionSetInfo"
+  }
+]

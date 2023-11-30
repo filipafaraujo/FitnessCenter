@@ -1,0 +1,243 @@
+ScreenMembro As screen:
+    BackgroundImage: ='Untitled-2'
+    Fill: =RGBA(20, 52, 84, 1)
+    OnVisible: =
+
+    lbl_registoEntradaAcademiaAula As label:
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =80
+        Size: =25
+        Text: |-
+            ="Registe a entrada no Fitness Center e/ou Agende uma aula:"
+        Width: =1114
+        X: =37
+        Y: =92
+        ZIndex: =6
+
+    img_logo3 As image:
+        Height: =44
+        Image: =Imagem2
+        X: =1263
+        Y: =9
+        ZIndex: =7
+
+    btn_regEntrada As button:
+        Fill: =RGBA(146, 146, 146, 1)
+        Height: =222
+        OnSelect: |-
+            =Patch(
+                _LogAcessos,
+                Defaults(_LogAcessos),
+                {
+                    entrada: Now(),
+                    Id_membro: LookUp(
+                        _Membros,
+                        id_membro = var_id_membro.id_membro
+                    )
+                }
+            );
+            Set(
+                var_registro,
+                LookUp(
+                    _Membros,
+                    id_membro = var_id_membro.id_membro,
+                    ultimaEntrada
+                )
+            );
+            Set(
+                var_visitasConsecutivas,
+                LookUp(
+                    _Membros,
+                    id_membro = var_id_membro.id_membro,
+                    CounterVisitasConsecutivas
+                )
+            );
+            Patch(
+                _Membros,
+                LookUp(
+                    _Membros,
+                    id_membro = var_id_membro.id_membro
+                ),
+                {
+                    CounterVisitasConsecutivas: If(
+                        DateDiff(
+                            var_registro,
+                            Today(),
+                            TimeUnit.Days
+                        ) = 1,
+                        var_visitasConsecutivas + 1,
+                        0
+                    )
+                }
+            );
+            Patch(
+                _Membros,
+                LookUp(
+                    _Membros,
+                    id_membro = var_id_membro.id_membro
+                ),
+                {ultimaEntrada: Today()}
+            );
+            Navigate(ScreenRegistoEntrada)
+        Size: =23
+        Text: ="Entrada no Ginásio"
+        Width: =332
+        X: =107
+        Y: =225
+        ZIndex: =8
+
+    btn_saidaGinasio As button:
+        Fill: =RGBA(146, 146, 146, 1)
+        Height: =226
+        OnSelect: |-
+            =Set(
+                var_lastRecord,
+                First(Sort(
+                    Filter(_LogAcessos, Id_membro.id_membro = var_id_membro.id_membro),
+                    entrada,
+                    SortOrder.Descending
+                ))
+            );
+            
+            Patch(
+                _LogAcessos,
+                var_lastRecord,
+                {
+                    saida: Now()
+                }
+            );
+            Navigate(ScreenFeedback)
+        Size: =23
+        Text: ="Saída do Ginásio"
+        Width: =332
+        X: =104
+        Y: =470
+        ZIndex: =9
+
+    btn_agendamentoAula_PT As button:
+        Fill: =RGBA(131, 60, 108, 1)
+        Height: =226
+        OnSelect: =Navigate(ScreenCheckinAula)
+        Size: =23
+        Text: ="Checkin em Aula"
+        Width: =332
+        X: =521
+        Y: =222
+        ZIndex: =10
+
+    btn_informaçõesRegras As button:
+        Fill: =RGBA(131, 60, 108, 1)
+        Height: =224
+        OnSelect: =Navigate(ScreenRegrasInformacoes)
+        Size: =23
+        Text: ="Informações / Regras"
+        Width: =332
+        X: =517
+        Y: =470
+        ZIndex: =11
+
+    lbl_bemVindo2 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =66
+        Size: =25
+        Text: =$"Bem Vindo {var_id_membro.nome}"
+        Width: =525
+        X: =16
+        Y: =10
+        ZIndex: =12
+
+    Img_combo_YellPinkTriang1_4 As image:
+        Height: =150
+        Image: =TriangulosAmareloRosa
+        Transparency: =0.4
+        Width: =150
+        X: =959
+        Y: =273
+        ZIndex: =13
+
+    img_serviceFitness3 As image:
+        Height: =34
+        Image: =ServiceFitness
+        Width: =97
+        X: =1266
+        Y: =53
+        ZIndex: =14
+
+    img_womanExercise As image:
+        DisplayMode: =DisplayMode.View
+        Height: =226
+        Image: =mulher
+        Width: =204
+        X: =1030
+        Y: =470
+        ZIndex: =15
+
+    btn_registoEntradaMembro As button:
+        Fill: =RGBA(245, 208, 0, 1)
+        Height: =226
+        Size: =23
+        Text: |-
+            ="O meu registo de entradas como membro:"
+        Visible: =false
+        Width: =333
+        X: =933
+        Y: =221
+        ZIndex: =16
+
+    Btn_nav_Login_Membro As button:
+        Color: =RGBA(20, 52, 84, 1)
+        Fill: =RGBA(245, 208, 0, 1)
+        Height: =50
+        OnSelect: =Navigate(ScreenLogin)
+        Text: ="LOGIN"
+        Width: =150
+        X: =1024
+        Y: =22
+        ZIndex: =17
+
+    FullTriangleSet_ScreenMembro As group:
+        Height: =5
+        Width: =5
+        X: =100
+        Y: =100
+        ZIndex: =28
+
+        Img_TriangSet2_4 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            X: =1062
+            ZIndex: =1
+
+        Img_TriangSet1_4 As image:
+            Height: =287
+            Image: =TriangulosSetCinza
+            Transparency: =0.85
+            Width: =304
+            ZIndex: =2
+
+        Img_combo_YellPinkTriang2_3 As image:
+            Image: =TriangulosAmareloRosa
+            Transparency: =0.3
+            X: =238
+            Y: =319
+            ZIndex: =3
+
+        Img_tri_AzulClaro_4 As image:
+            Image: =TrianguloAzul
+            Transparency: =0.4
+            X: =104
+            Y: =298
+            ZIndex: =4
+
+        Img_tri_AzulNavy_4 As image:
+            Image: =TrianguloNavy180
+            Transparency: =0.4
+            X: =132
+            Y: =319
+            ZIndex: =5
+
