@@ -51,7 +51,6 @@ Main tools used: Power Apps, Power Automate and PowerBI
 
 **1. Power Apps:**
 
-Key Features:
 Saving gym access information 
 Save check-in and class attendance records
 Register new members in the gym
@@ -78,7 +77,6 @@ Attendance reminder emails for users missing training for over 3 days.
 
 **3. Power BI:**
 
-Key Features:
 Analyzing user attendance and exercise class popularity.
 Active user profiling for predicting new services.
 Utilizing daily, monthly, and yearly data for marketing insights and issue prediction.
